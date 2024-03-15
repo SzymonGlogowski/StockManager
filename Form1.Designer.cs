@@ -33,24 +33,24 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.chtChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.cbxChartType = new System.Windows.Forms.ComboBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnLoad = new System.Windows.Forms.Button();
-            this.cbxIndicators = new System.Windows.Forms.ComboBox();
-            this.stocksDatabaseDataSet = new StockManager.StocksDatabaseDataSet();
-            this.stocksBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.stocksTableAdapter = new StockManager.StocksDatabaseDataSetTableAdapters.StocksTableAdapter();
             this.candleNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.closeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.highDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lowDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stocksBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.stocksDatabaseDataSet = new StockManager.StocksDatabaseDataSet();
+            this.chtChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.cbxChartType = new System.Windows.Forms.ComboBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
+            this.cbxIndicators = new System.Windows.Forms.ComboBox();
+            this.stocksTableAdapter = new StockManager.StocksDatabaseDataSetTableAdapters.StocksTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chtChart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stocksDatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stocksBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stocksDatabaseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chtChart)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvData
@@ -69,74 +69,6 @@
             this.dgvData.Name = "dgvData";
             this.dgvData.Size = new System.Drawing.Size(650, 225);
             this.dgvData.TabIndex = 0;
-            // 
-            // chtChart
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chtChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chtChart.Legends.Add(legend1);
-            this.chtChart.Location = new System.Drawing.Point(13, 13);
-            this.chtChart.Name = "chtChart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
-            series1.Legend = "Legend1";
-            series1.Name = "Stock Value";
-            series1.YValuesPerPoint = 4;
-            this.chtChart.Series.Add(series1);
-            this.chtChart.Size = new System.Drawing.Size(860, 350);
-            this.chtChart.TabIndex = 1;
-            this.chtChart.Text = "chart1";
-            // 
-            // cbxChartType
-            // 
-            this.cbxChartType.FormattingEnabled = true;
-            this.cbxChartType.Location = new System.Drawing.Point(668, 371);
-            this.cbxChartType.Name = "cbxChartType";
-            this.cbxChartType.Size = new System.Drawing.Size(100, 21);
-            this.cbxChartType.TabIndex = 2;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(668, 398);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 25);
-            this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "&Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnLoad
-            // 
-            this.btnLoad.Location = new System.Drawing.Point(775, 398);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(100, 25);
-            this.btnLoad.TabIndex = 4;
-            this.btnLoad.Text = "&Load";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
-            // 
-            // cbxIndicators
-            // 
-            this.cbxIndicators.FormattingEnabled = true;
-            this.cbxIndicators.Location = new System.Drawing.Point(775, 371);
-            this.cbxIndicators.Name = "cbxIndicators";
-            this.cbxIndicators.Size = new System.Drawing.Size(100, 21);
-            this.cbxIndicators.TabIndex = 5;
-            // 
-            // stocksDatabaseDataSet
-            // 
-            this.stocksDatabaseDataSet.DataSetName = "StocksDatabaseDataSet";
-            this.stocksDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // stocksBindingSource
-            // 
-            this.stocksBindingSource.DataMember = "Stocks";
-            this.stocksBindingSource.DataSource = this.stocksDatabaseDataSet;
-            // 
-            // stocksTableAdapter
-            // 
-            this.stocksTableAdapter.ClearBeforeFill = true;
             // 
             // candleNumberDataGridViewTextBoxColumn
             // 
@@ -174,6 +106,79 @@
             this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
             this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
             // 
+            // stocksBindingSource
+            // 
+            this.stocksBindingSource.DataMember = "Stocks";
+            this.stocksBindingSource.DataSource = this.stocksDatabaseDataSet;
+            // 
+            // stocksDatabaseDataSet
+            // 
+            this.stocksDatabaseDataSet.DataSetName = "StocksDatabaseDataSet";
+            this.stocksDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // chtChart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chtChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chtChart.Legends.Add(legend1);
+            this.chtChart.Location = new System.Drawing.Point(13, 13);
+            this.chtChart.Name = "chtChart";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
+            series1.Legend = "Legend1";
+            series1.Name = "Stock Value";
+            series1.YValuesPerPoint = 4;
+            this.chtChart.Series.Add(series1);
+            this.chtChart.Size = new System.Drawing.Size(860, 350);
+            this.chtChart.TabIndex = 1;
+            this.chtChart.Text = "chart1";
+            // 
+            // cbxChartType
+            // 
+            this.cbxChartType.FormattingEnabled = true;
+            this.cbxChartType.Items.AddRange(new object[] {
+            "Line",
+            "Bar",
+            "Candlestick"});
+            this.cbxChartType.Location = new System.Drawing.Point(668, 371);
+            this.cbxChartType.Name = "cbxChartType";
+            this.cbxChartType.Size = new System.Drawing.Size(100, 21);
+            this.cbxChartType.TabIndex = 2;
+            this.cbxChartType.Text = "Candlestick";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(668, 398);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(100, 25);
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "&Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(775, 398);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(100, 25);
+            this.btnLoad.TabIndex = 4;
+            this.btnLoad.Text = "&Load";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
+            // cbxIndicators
+            // 
+            this.cbxIndicators.FormattingEnabled = true;
+            this.cbxIndicators.Location = new System.Drawing.Point(775, 371);
+            this.cbxIndicators.Name = "cbxIndicators";
+            this.cbxIndicators.Size = new System.Drawing.Size(100, 21);
+            this.cbxIndicators.TabIndex = 5;
+            // 
+            // stocksTableAdapter
+            // 
+            this.stocksTableAdapter.ClearBeforeFill = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,9 +194,9 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chtChart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stocksDatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stocksBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stocksDatabaseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chtChart)).EndInit();
             this.ResumeLayout(false);
 
         }
