@@ -205,7 +205,7 @@ namespace StockManager
 
         private void cbxIndicators_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*if(cbxIndicators.SelectedIndex == 0)
+            if(cbxIndicators.SelectedIndex == 0)
             {
                 Series RSI = chtIndicators.Series.Add("RSI");
                 chtIndicators.Series["RSI"].ChartType = SeriesChartType.Line;
@@ -238,16 +238,21 @@ namespace StockManager
                 }
 
                 List<double> RSIvalue = new List<double>();
+
+                for(int i = 0; i < dates.Count(); i += 1)
+                {
+                    RSIvalue.Add(50.0);
+                }
                 
-
-
                 RSI.Color = Color.Purple;
                 RSI.Points.DataBindXY(dates, RSIvalue);
 
+                //IEnumerable<RsiResult> results = quotes.GetRsi(lookbackPeriods);
+
                 //chtIndicators.DataManipulator.IsStartFromFirst = true;
                 //chtIndicators.DataSource = stocksDatabaseDataSet.Stocks;
-                //chtIndicators.DataBind();
-            }*/
+                //chtIndicators.DataBind();*/
+            }
         }
 
         private void chxEnableAutoscalling_CheckedChanged(object sender, EventArgs e)
