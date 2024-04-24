@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Data.SqlClient;
+using Skender.Stock.Indicators;
 
 namespace StockManager
 {
@@ -50,8 +51,6 @@ namespace StockManager
 
             chtChart.ChartAreas["ChartArea1"].AxisY.Interval = ((double)max - (double)min) / 5.0;
             chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtChart.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
-
-            btnScalingReset.Enabled = false;
         }
 
         private void GenericChartScaling()
@@ -73,8 +72,6 @@ namespace StockManager
 
             chtChart.ChartAreas["ChartArea1"].AxisY.Interval = ((double)max) / 5.0;
             chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtChart.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
-
-            btnScalingReset.Enabled = true;
         }
 
         private void ScalingByMarkingArea()
@@ -86,8 +83,6 @@ namespace StockManager
             chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.Zoomable = true;
             chtChart.ChartAreas["ChartArea1"].CursorY.AutoScroll = true;
             chtChart.ChartAreas["ChartArea1"].CursorY.IsUserSelectionEnabled = true;
-
-            btnZoomReset.Enabled = false;
         }
 
         private void DisableScallingByMarkingArea()
@@ -99,8 +94,12 @@ namespace StockManager
             chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.Zoomable = false;
             chtChart.ChartAreas["ChartArea1"].CursorY.AutoScroll = false;
             chtChart.ChartAreas["ChartArea1"].CursorY.IsUserSelectionEnabled = false;
+        }
 
-            btnZoomReset.Enabled = true;
+        private void ZoomReset()
+        {
+            chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.ZoomReset();
+            chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.ZoomReset();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -130,26 +129,6 @@ namespace StockManager
         {
             if (cbxChartType.SelectedIndex == 0)
             {
-                if (chxEnableAutoscalling.Checked)
-                {
-                    ChartScaling();
-                }
-
-                if (!chxEnableAutoscalling.Checked)
-                {
-                    GenericChartScaling();
-                }
-
-                if (chxEnableScallingByMarkingArea.Checked)
-                {
-                    ScalingByMarkingArea();
-                }
-
-                if (!chxEnableScallingByMarkingArea.Checked)
-                {
-                    DisableScallingByMarkingArea();
-                }
-
                 chtChart.Series["Stock Value"].ChartType = SeriesChartType.Line;
 
                 chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
@@ -166,7 +145,6 @@ namespace StockManager
                 chtChart.Series["Stock Value"].XValueMember = "Date";
                 chtChart.Series["Stock Value"].YValueMembers = "Close";
                 chtChart.Series["Stock Value"].XValueType = ChartValueType.Date;
-                chtChart.Series["Stock Value"]["ShowOpenClose"] = "Both";
 
                 chtChart.DataManipulator.IsStartFromFirst = true;
                 chtChart.DataSource = stocksDatabaseDataSet.Stocks;
@@ -175,26 +153,6 @@ namespace StockManager
 
             if (cbxChartType.SelectedIndex == 1)
             {
-                if (chxEnableAutoscalling.Checked)
-                {
-                    ChartScaling();
-                }
-
-                if (!chxEnableAutoscalling.Checked)
-                {
-                    GenericChartScaling();
-                }
-
-                if (chxEnableScallingByMarkingArea.Checked)
-                {
-                    ScalingByMarkingArea();
-                }
-
-                if (!chxEnableScallingByMarkingArea.Checked)
-                {
-                    DisableScallingByMarkingArea();
-                }
-
                 chtChart.Series["Stock Value"].ChartType = SeriesChartType.Stock;
 
                 chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
@@ -220,26 +178,6 @@ namespace StockManager
 
             if (cbxChartType.SelectedIndex == 2)
             {
-                if (chxEnableAutoscalling.Checked)
-                {
-                    ChartScaling();
-                }
-
-                if (!chxEnableAutoscalling.Checked)
-                {
-                    GenericChartScaling();
-                }
-
-                if (chxEnableScallingByMarkingArea.Checked)
-                {
-                    ScalingByMarkingArea();
-                }
-
-                if (!chxEnableScallingByMarkingArea.Checked)
-                {
-                    DisableScallingByMarkingArea();
-                }
-
                 chtChart.Series["Stock Value"].ChartType = SeriesChartType.Candlestick;
 
                 chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
@@ -265,31 +203,86 @@ namespace StockManager
             }
         }
 
-        private void btnZoomReset_Click(object sender, EventArgs e)
+        private void cbxIndicators_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.ZoomReset();
-            chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.ZoomReset();
+            /*if(cbxIndicators.SelectedIndex == 0)
+            {
+                Series RSI = chtIndicators.Series.Add("RSI");
+                chtIndicators.Series["RSI"].ChartType = SeriesChartType.Line;
+
+                chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.Maximum = 100.0;
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.Minimum = 0.0;
+
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval = 100.0 / 10.0;
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
+
+                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Minimum = xAxisMin;
+                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Maximum = xAxisMax;
+
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+
+                chtIndicators.Legends.Clear();
+
+                List<DateTime> dates = new List<DateTime>();
+
+                foreach (DataGridViewRow row in dgvData.Rows)
+                {
+                    if (null != row && null != row.Cells[5].Value)
+                    {
+                        dates.Add(Convert.ToDateTime(row.Cells[5].Value.ToString()));
+                    }
+                }
+
+                List<double> RSIvalue = new List<double>();
+                
+
+
+                RSI.Color = Color.Purple;
+                RSI.Points.DataBindXY(dates, RSIvalue);
+
+                //chtIndicators.DataManipulator.IsStartFromFirst = true;
+                //chtIndicators.DataSource = stocksDatabaseDataSet.Stocks;
+                //chtIndicators.DataBind();
+            }*/
         }
 
-        private void btnScalingReset_Click(object sender, EventArgs e)
+        private void chxEnableAutoscalling_CheckedChanged(object sender, EventArgs e)
         {
-            List<decimal> high = new List<decimal>();
-
-            foreach (DataGridViewRow row in dgvData.Rows)
+            if (chxEnableAutoscalling.Checked)
             {
-                if (null != row && null != row.Cells[3].Value)
-                {
-                    high.Add(Convert.ToDecimal(row.Cells[3].Value.ToString()));
-                }
+                chxEnableScallingByMarkingArea.Enabled = false;
+                ChartScaling();
+                btnLoad.PerformClick();
             }
 
-            decimal max = high.Max();
+            if (!chxEnableAutoscalling.Checked)
+            {
+                chxEnableScallingByMarkingArea.Enabled = true;
+                GenericChartScaling();
+                btnLoad.PerformClick();
+            }
+        }
 
-            chtChart.ChartAreas["ChartArea1"].AxisY.Maximum = (double)max;
-            chtChart.ChartAreas["ChartArea1"].AxisY.Minimum = 0;
+        private void chxEnableScallingByMarkingArea_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chxEnableScallingByMarkingArea.Checked)
+            {
+                chxEnableAutoscalling.Enabled = false;
+                ScalingByMarkingArea();
+                btnLoad.PerformClick();
+            }
 
-            chtChart.ChartAreas["ChartArea1"].AxisY.Interval = ((double)max) / 5.0;
-            chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtChart.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
+            if (!chxEnableScallingByMarkingArea.Checked)
+            {
+                chxEnableAutoscalling.Enabled = true;
+                DisableScallingByMarkingArea();
+                ZoomReset();
+                btnLoad.PerformClick();
+            }
         }
     }
 }

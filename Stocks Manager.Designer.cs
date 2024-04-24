@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.candleNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,8 +53,6 @@
             this.stocksTableAdapter = new StockManager.StocksDatabaseDataSetTableAdapters.StocksTableAdapter();
             this.chxEnableAutoscalling = new System.Windows.Forms.CheckBox();
             this.chxEnableScallingByMarkingArea = new System.Windows.Forms.CheckBox();
-            this.btnZoomReset = new System.Windows.Forms.Button();
-            this.btnScalingReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stocksBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stocksDatabaseDataSet)).BeginInit();
@@ -127,21 +125,21 @@
             // 
             // chtChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chtChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chtChart.Legends.Add(legend1);
+            chartArea11.Name = "ChartArea1";
+            this.chtChart.ChartAreas.Add(chartArea11);
+            legend11.Name = "Legend1";
+            this.chtChart.Legends.Add(legend11);
             this.chtChart.Location = new System.Drawing.Point(13, 13);
             this.chtChart.Name = "chtChart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
-            series1.Legend = "Legend1";
-            series1.Name = "Stock Value";
-            series1.YValuesPerPoint = 4;
-            this.chtChart.Series.Add(series1);
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
+            series11.Legend = "Legend1";
+            series11.Name = "Stock Value";
+            series11.YValuesPerPoint = 4;
+            this.chtChart.Series.Add(series11);
             this.chtChart.Size = new System.Drawing.Size(860, 350);
             this.chtChart.TabIndex = 1;
-            this.chtChart.Text = "chart1";
+            this.chtChart.Text = "Chart";
             // 
             // cbxChartType
             // 
@@ -179,27 +177,30 @@
             // cbxIndicators
             // 
             this.cbxIndicators.FormattingEnabled = true;
+            this.cbxIndicators.Items.AddRange(new object[] {
+            "RSI"});
             this.cbxIndicators.Location = new System.Drawing.Point(773, 624);
             this.cbxIndicators.Name = "cbxIndicators";
             this.cbxIndicators.Size = new System.Drawing.Size(100, 21);
-            this.cbxIndicators.TabIndex = 5;
+            this.cbxIndicators.TabIndex = 0;
+            this.cbxIndicators.SelectedIndexChanged += new System.EventHandler(this.cbxIndicators_SelectedIndexChanged);
             // 
             // chtIndicators
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chtIndicators.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chtIndicators.Legends.Add(legend2);
+            chartArea12.Name = "ChartArea1";
+            this.chtIndicators.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            this.chtIndicators.Legends.Add(legend12);
             this.chtIndicators.Location = new System.Drawing.Point(13, 370);
             this.chtIndicators.Name = "chtIndicators";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chtIndicators.Series.Add(series2);
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series12.Legend = "Legend1";
+            series12.Name = "Series1";
+            this.chtIndicators.Series.Add(series12);
             this.chtIndicators.Size = new System.Drawing.Size(860, 248);
             this.chtIndicators.TabIndex = 6;
-            this.chtIndicators.Text = "chart1";
+            this.chtIndicators.Text = "Indicators";
             // 
             // stocksTableAdapter
             // 
@@ -214,6 +215,7 @@
             this.chxEnableAutoscalling.TabIndex = 7;
             this.chxEnableAutoscalling.Text = "Enable Autoscalling";
             this.chxEnableAutoscalling.UseVisualStyleBackColor = true;
+            this.chxEnableAutoscalling.CheckedChanged += new System.EventHandler(this.chxEnableAutoscalling_CheckedChanged);
             // 
             // chxEnableScallingByMarkingArea
             // 
@@ -224,34 +226,13 @@
             this.chxEnableScallingByMarkingArea.TabIndex = 8;
             this.chxEnableScallingByMarkingArea.Text = "Enable Scalling By Marking Area";
             this.chxEnableScallingByMarkingArea.UseVisualStyleBackColor = true;
-            // 
-            // btnZoomReset
-            // 
-            this.btnZoomReset.Location = new System.Drawing.Point(773, 728);
-            this.btnZoomReset.Name = "btnZoomReset";
-            this.btnZoomReset.Size = new System.Drawing.Size(100, 25);
-            this.btnZoomReset.TabIndex = 9;
-            this.btnZoomReset.Text = "Zoom Reset";
-            this.btnZoomReset.UseVisualStyleBackColor = true;
-            this.btnZoomReset.Click += new System.EventHandler(this.btnZoomReset_Click);
-            // 
-            // btnScalingReset
-            // 
-            this.btnScalingReset.Location = new System.Drawing.Point(666, 728);
-            this.btnScalingReset.Name = "btnScalingReset";
-            this.btnScalingReset.Size = new System.Drawing.Size(100, 25);
-            this.btnScalingReset.TabIndex = 10;
-            this.btnScalingReset.Text = "Scaling Reset";
-            this.btnScalingReset.UseVisualStyleBackColor = true;
-            this.btnScalingReset.Click += new System.EventHandler(this.btnScalingReset_Click);
+            this.chxEnableScallingByMarkingArea.CheckedChanged += new System.EventHandler(this.chxEnableScallingByMarkingArea_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 861);
-            this.Controls.Add(this.btnScalingReset);
-            this.Controls.Add(this.btnZoomReset);
             this.Controls.Add(this.chxEnableScallingByMarkingArea);
             this.Controls.Add(this.chxEnableAutoscalling);
             this.Controls.Add(this.chtIndicators);
@@ -262,7 +243,7 @@
             this.Controls.Add(this.chtChart);
             this.Controls.Add(this.dgvData);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Stock Manager";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stocksBindingSource)).EndInit();
@@ -294,8 +275,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chtIndicators;
         private System.Windows.Forms.CheckBox chxEnableAutoscalling;
         private System.Windows.Forms.CheckBox chxEnableScallingByMarkingArea;
-        private System.Windows.Forms.Button btnZoomReset;
-        private System.Windows.Forms.Button btnScalingReset;
     }
 }
 
