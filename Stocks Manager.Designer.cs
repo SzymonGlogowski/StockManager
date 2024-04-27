@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.candleNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +53,7 @@
             this.stocksTableAdapter = new StockManager.StocksDatabaseDataSetTableAdapters.StocksTableAdapter();
             this.chxEnableAutoscalling = new System.Windows.Forms.CheckBox();
             this.chxEnableScallingByMarkingArea = new System.Windows.Forms.CheckBox();
+            this.btnExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stocksBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stocksDatabaseDataSet)).BeginInit();
@@ -125,18 +126,18 @@
             // 
             // chtChart
             // 
-            chartArea11.Name = "ChartArea1";
-            this.chtChart.ChartAreas.Add(chartArea11);
-            legend11.Name = "Legend1";
-            this.chtChart.Legends.Add(legend11);
+            chartArea1.Name = "ChartArea1";
+            this.chtChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chtChart.Legends.Add(legend1);
             this.chtChart.Location = new System.Drawing.Point(13, 13);
             this.chtChart.Name = "chtChart";
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
-            series11.Legend = "Legend1";
-            series11.Name = "Stock Value";
-            series11.YValuesPerPoint = 4;
-            this.chtChart.Series.Add(series11);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
+            series1.Legend = "Legend1";
+            series1.Name = "Stock Value";
+            series1.YValuesPerPoint = 4;
+            this.chtChart.Series.Add(series1);
             this.chtChart.Size = new System.Drawing.Size(860, 350);
             this.chtChart.TabIndex = 1;
             this.chtChart.Text = "Chart";
@@ -187,17 +188,17 @@
             // 
             // chtIndicators
             // 
-            chartArea12.Name = "ChartArea1";
-            this.chtIndicators.ChartAreas.Add(chartArea12);
-            legend12.Name = "Legend1";
-            this.chtIndicators.Legends.Add(legend12);
+            chartArea2.Name = "ChartArea1";
+            this.chtIndicators.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chtIndicators.Legends.Add(legend2);
             this.chtIndicators.Location = new System.Drawing.Point(13, 370);
             this.chtIndicators.Name = "chtIndicators";
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series12.Legend = "Legend1";
-            series12.Name = "Series1";
-            this.chtIndicators.Series.Add(series12);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chtIndicators.Series.Add(series2);
             this.chtIndicators.Size = new System.Drawing.Size(860, 248);
             this.chtIndicators.TabIndex = 6;
             this.chtIndicators.Text = "Indicators";
@@ -228,11 +229,22 @@
             this.chxEnableScallingByMarkingArea.UseVisualStyleBackColor = true;
             this.chxEnableScallingByMarkingArea.CheckedChanged += new System.EventHandler(this.chxEnableScallingByMarkingArea_CheckedChanged);
             // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(666, 728);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(100, 25);
+            this.btnExport.TabIndex = 9;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 861);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.chxEnableScallingByMarkingArea);
             this.Controls.Add(this.chxEnableAutoscalling);
             this.Controls.Add(this.chtIndicators);
@@ -275,6 +287,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chtIndicators;
         private System.Windows.Forms.CheckBox chxEnableAutoscalling;
         private System.Windows.Forms.CheckBox chxEnableScallingByMarkingArea;
+        private System.Windows.Forms.Button btnExport;
     }
 }
 

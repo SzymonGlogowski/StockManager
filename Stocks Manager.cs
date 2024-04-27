@@ -289,5 +289,35 @@ namespace StockManager
                 btnLoad.PerformClick();
             }
         }
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = ".jpeg|*.jpeg|.png|*.png|.bmp|*.bmp";
+            saveFileDialog1.Title = "Save the chart as an Image File";
+            saveFileDialog1.ShowDialog();
+
+            if (saveFileDialog1.FileName != "")
+            {
+                System.IO.FileStream fs = (System.IO.FileStream)saveFileDialog1.OpenFile();
+                switch (saveFileDialog1.FilterIndex)
+                {
+                    case 1:
+                        chtChart.SaveImage(fs, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        MessageBox.Show("Chart successfully saved as JPEG image!", "Saved");
+                        break;
+
+                    case 2:
+                        chtChart.SaveImage(fs, System.Drawing.Imaging.ImageFormat.Png);
+                        MessageBox.Show("Chart successfully saved as PNG image!", "Saved");
+                        break;
+                    case 3:
+                        chtChart.SaveImage(fs, System.Drawing.Imaging.ImageFormat.Bmp);
+                        MessageBox.Show("Chart successfully saved as BMP image!", "Saved");
+                        break;
+                }
+
+                fs.Close();
+            }
+        }
     }
 }
