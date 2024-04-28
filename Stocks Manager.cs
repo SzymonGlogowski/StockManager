@@ -19,7 +19,6 @@ namespace StockManager
         {
             InitializeComponent();
         }
-
         private void ChartScaling()
         {
             List<decimal> high = new List<decimal>();
@@ -52,7 +51,6 @@ namespace StockManager
             chtChart.ChartAreas["ChartArea1"].AxisY.Interval = ((double)max - (double)min) / 5.0;
             chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtChart.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
         }
-
         private void GenericChartScaling()
         {
             List<decimal> high = new List<decimal>();
@@ -73,7 +71,6 @@ namespace StockManager
             chtChart.ChartAreas["ChartArea1"].AxisY.Interval = ((double)max) / 5.0;
             chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtChart.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
         }
-
         private void ScalingByMarkingArea()
         {
             chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Zoomable = true;
@@ -84,7 +81,6 @@ namespace StockManager
             chtChart.ChartAreas["ChartArea1"].CursorY.AutoScroll = true;
             chtChart.ChartAreas["ChartArea1"].CursorY.IsUserSelectionEnabled = true;
         }
-
         private void DisableScallingByMarkingArea()
         {
             chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Zoomable = false;
@@ -95,20 +91,17 @@ namespace StockManager
             chtChart.ChartAreas["ChartArea1"].CursorY.AutoScroll = false;
             chtChart.ChartAreas["ChartArea1"].CursorY.IsUserSelectionEnabled = false;
         }
-
         private void ZoomReset()
         {
             chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.ZoomReset();
             chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.ZoomReset();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             this.stocksTableAdapter.Fill(this.stocksDatabaseDataSet.Stocks);
             chxEnableAutoscalling.Checked = true;
             btnLoad.PerformClick();
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -118,7 +111,6 @@ namespace StockManager
                 dgvData.Refresh();
                 MessageBox.Show("Your data has been successfully saved.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -129,8 +121,6 @@ namespace StockManager
         {
             if (cbxChartType.SelectedIndex == 0)
             {
-                chtChart.Series["Stock Value"].ChartType = SeriesChartType.Line;
-
                 chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
@@ -150,11 +140,8 @@ namespace StockManager
                 chtChart.DataSource = stocksDatabaseDataSet.Stocks;
                 chtChart.DataBind();
             }
-
             if (cbxChartType.SelectedIndex == 1)
             {
-                chtChart.Series["Stock Value"].ChartType = SeriesChartType.Stock;
-
                 chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
@@ -175,11 +162,8 @@ namespace StockManager
                 chtChart.DataSource = stocksDatabaseDataSet.Stocks;
                 chtChart.DataBind();
             }
-
             if (cbxChartType.SelectedIndex == 2)
             {
-                chtChart.Series["Stock Value"].ChartType = SeriesChartType.Candlestick;
-
                 chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
@@ -200,6 +184,25 @@ namespace StockManager
                 chtChart.DataManipulator.IsStartFromFirst = true;
                 chtChart.DataSource = stocksDatabaseDataSet.Stocks;
                 chtChart.DataBind();
+            }
+        }
+
+        private void cbxChartType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbxChartType.SelectedIndex == 0)
+            {
+                chtChart.Series["Stock Value"].ChartType = SeriesChartType.Line;
+                btnLoad.PerformClick();
+            }
+            if (cbxChartType.SelectedIndex == 1)
+            {
+                chtChart.Series["Stock Value"].ChartType = SeriesChartType.Stock;
+                btnLoad.PerformClick();
+            }
+            if (cbxChartType.SelectedIndex == 2)
+            {
+                chtChart.Series["Stock Value"].ChartType = SeriesChartType.Candlestick;
+                btnLoad.PerformClick();
             }
         }
 
@@ -315,7 +318,6 @@ namespace StockManager
                         MessageBox.Show("Chart successfully saved as BMP image!", "Saved");
                         break;
                 }
-
                 fs.Close();
             }
         }

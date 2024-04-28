@@ -154,6 +154,7 @@
             this.cbxChartType.Size = new System.Drawing.Size(100, 21);
             this.cbxChartType.TabIndex = 2;
             this.cbxChartType.Text = "Candlestick";
+            this.cbxChartType.SelectedIndexChanged += new System.EventHandler(this.cbxChartType_SelectedIndexChanged);
             // 
             // btnSave
             // 
