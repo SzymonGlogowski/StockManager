@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.candleNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,11 +54,27 @@
             this.chxEnableAutoscalling = new System.Windows.Forms.CheckBox();
             this.chxEnableScallingByMarkingArea = new System.Windows.Forms.CheckBox();
             this.btnExport = new System.Windows.Forms.Button();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.splitter1 = new System.Windows.Forms.Splitter();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stocksBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stocksDatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chtChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chtIndicators)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvData
@@ -73,9 +89,10 @@
             this.lowDataGridViewTextBoxColumn,
             this.dateDataGridViewTextBoxColumn});
             this.dgvData.DataSource = this.stocksBindingSource;
-            this.dgvData.Location = new System.Drawing.Point(12, 624);
+            this.dgvData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvData.Location = new System.Drawing.Point(0, 0);
             this.dgvData.Name = "dgvData";
-            this.dgvData.Size = new System.Drawing.Size(650, 225);
+            this.dgvData.Size = new System.Drawing.Size(650, 226);
             this.dgvData.TabIndex = 0;
             // 
             // candleNumberDataGridViewTextBoxColumn
@@ -126,19 +143,20 @@
             // 
             // chtChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chtChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chtChart.Legends.Add(legend1);
-            this.chtChart.Location = new System.Drawing.Point(13, 13);
+            chartArea3.Name = "ChartArea1";
+            this.chtChart.ChartAreas.Add(chartArea3);
+            this.chtChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend3.Name = "Legend1";
+            this.chtChart.Legends.Add(legend3);
+            this.chtChart.Location = new System.Drawing.Point(0, 0);
             this.chtChart.Name = "chtChart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
-            series1.Legend = "Legend1";
-            series1.Name = "Stock Value";
-            series1.YValuesPerPoint = 4;
-            this.chtChart.Series.Add(series1);
-            this.chtChart.Size = new System.Drawing.Size(860, 350);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
+            series3.Legend = "Legend1";
+            series3.Name = "Stock Value";
+            series3.YValuesPerPoint = 4;
+            this.chtChart.Series.Add(series3);
+            this.chtChart.Size = new System.Drawing.Size(859, 350);
             this.chtChart.TabIndex = 1;
             this.chtChart.Text = "Chart";
             // 
@@ -149,18 +167,18 @@
             "Line",
             "Bar",
             "Candlestick"});
-            this.cbxChartType.Location = new System.Drawing.Point(666, 624);
+            this.cbxChartType.Location = new System.Drawing.Point(3, 3);
             this.cbxChartType.Name = "cbxChartType";
-            this.cbxChartType.Size = new System.Drawing.Size(100, 21);
+            this.cbxChartType.Size = new System.Drawing.Size(95, 21);
             this.cbxChartType.TabIndex = 2;
             this.cbxChartType.Text = "Candlestick";
             this.cbxChartType.SelectedIndexChanged += new System.EventHandler(this.cbxChartType_SelectedIndexChanged);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(666, 651);
+            this.btnSave.Location = new System.Drawing.Point(3, 30);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 25);
+            this.btnSave.Size = new System.Drawing.Size(95, 25);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -168,9 +186,9 @@
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(772, 651);
+            this.btnLoad.Location = new System.Drawing.Point(104, 30);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(100, 25);
+            this.btnLoad.Size = new System.Drawing.Size(95, 25);
             this.btnLoad.TabIndex = 4;
             this.btnLoad.Text = "&Load";
             this.btnLoad.UseVisualStyleBackColor = true;
@@ -181,26 +199,27 @@
             this.cbxIndicators.FormattingEnabled = true;
             this.cbxIndicators.Items.AddRange(new object[] {
             "RSI"});
-            this.cbxIndicators.Location = new System.Drawing.Point(773, 624);
+            this.cbxIndicators.Location = new System.Drawing.Point(104, 3);
             this.cbxIndicators.Name = "cbxIndicators";
-            this.cbxIndicators.Size = new System.Drawing.Size(100, 21);
+            this.cbxIndicators.Size = new System.Drawing.Size(95, 21);
             this.cbxIndicators.TabIndex = 0;
             this.cbxIndicators.SelectedIndexChanged += new System.EventHandler(this.cbxIndicators_SelectedIndexChanged);
             // 
             // chtIndicators
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chtIndicators.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chtIndicators.Legends.Add(legend2);
-            this.chtIndicators.Location = new System.Drawing.Point(13, 370);
+            chartArea4.Name = "ChartArea1";
+            this.chtIndicators.ChartAreas.Add(chartArea4);
+            this.chtIndicators.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend4.Name = "Legend1";
+            this.chtIndicators.Legends.Add(legend4);
+            this.chtIndicators.Location = new System.Drawing.Point(0, 0);
             this.chtIndicators.Name = "chtIndicators";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chtIndicators.Series.Add(series2);
-            this.chtIndicators.Size = new System.Drawing.Size(860, 248);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chtIndicators.Series.Add(series4);
+            this.chtIndicators.Size = new System.Drawing.Size(859, 250);
             this.chtIndicators.TabIndex = 6;
             this.chtIndicators.Text = "Indicators";
             // 
@@ -211,7 +230,7 @@
             // chxEnableAutoscalling
             // 
             this.chxEnableAutoscalling.AutoSize = true;
-            this.chxEnableAutoscalling.Location = new System.Drawing.Point(666, 682);
+            this.chxEnableAutoscalling.Location = new System.Drawing.Point(3, 61);
             this.chxEnableAutoscalling.Name = "chxEnableAutoscalling";
             this.chxEnableAutoscalling.Size = new System.Drawing.Size(119, 17);
             this.chxEnableAutoscalling.TabIndex = 7;
@@ -222,7 +241,7 @@
             // chxEnableScallingByMarkingArea
             // 
             this.chxEnableScallingByMarkingArea.AutoSize = true;
-            this.chxEnableScallingByMarkingArea.Location = new System.Drawing.Point(666, 705);
+            this.chxEnableScallingByMarkingArea.Location = new System.Drawing.Point(3, 84);
             this.chxEnableScallingByMarkingArea.Name = "chxEnableScallingByMarkingArea";
             this.chxEnableScallingByMarkingArea.Size = new System.Drawing.Size(180, 17);
             this.chxEnableScallingByMarkingArea.TabIndex = 8;
@@ -232,29 +251,94 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(666, 728);
+            this.btnExport.Location = new System.Drawing.Point(3, 107);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(100, 25);
+            this.btnExport.Size = new System.Drawing.Size(95, 25);
             this.btnExport.TabIndex = 9;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(13, 15);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.chtChart);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Size = new System.Drawing.Size(859, 834);
+            this.splitContainer1.SplitterDistance = 350;
+            this.splitContainer1.TabIndex = 10;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.IsSplitterFixed = true;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.chtIndicators);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
+            this.splitContainer2.Size = new System.Drawing.Size(859, 480);
+            this.splitContainer2.SplitterDistance = 250;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.IsSplitterFixed = true;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.dgvData);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.splitter1);
+            this.splitContainer3.Panel2.Controls.Add(this.cbxChartType);
+            this.splitContainer3.Panel2.Controls.Add(this.btnExport);
+            this.splitContainer3.Panel2.Controls.Add(this.chxEnableAutoscalling);
+            this.splitContainer3.Panel2.Controls.Add(this.chxEnableScallingByMarkingArea);
+            this.splitContainer3.Panel2.Controls.Add(this.cbxIndicators);
+            this.splitContainer3.Panel2.Controls.Add(this.btnSave);
+            this.splitContainer3.Panel2.Controls.Add(this.btnLoad);
+            this.splitContainer3.Size = new System.Drawing.Size(859, 226);
+            this.splitContainer3.SplitterDistance = 650;
+            this.splitContainer3.TabIndex = 0;
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 226);
+            this.splitter1.TabIndex = 10;
+            this.splitter1.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 861);
-            this.Controls.Add(this.btnExport);
-            this.Controls.Add(this.chxEnableScallingByMarkingArea);
-            this.Controls.Add(this.chxEnableAutoscalling);
-            this.Controls.Add(this.chtIndicators);
-            this.Controls.Add(this.cbxIndicators);
-            this.Controls.Add(this.btnLoad);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.cbxChartType);
-            this.Controls.Add(this.chtChart);
-            this.Controls.Add(this.dgvData);
+            this.Controls.Add(this.splitContainer1);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Form1";
             this.Text = "Stock Manager";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -263,8 +347,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.stocksDatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chtChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chtIndicators)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            this.splitContainer3.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -289,6 +385,10 @@
         private System.Windows.Forms.CheckBox chxEnableAutoscalling;
         private System.Windows.Forms.CheckBox chxEnableScallingByMarkingArea;
         private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.Splitter splitter1;
     }
 }
 
