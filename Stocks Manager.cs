@@ -127,7 +127,6 @@ namespace StockManager
         {
             try
             {
-                stocksTableAdapter.ClearBeforeFill;
                 var historicdata = await Yahoo.GetHistoricalAsync(symbol, startDate, endDate);
                 var security = await Yahoo.Symbols(symbol).Fields(Field.LongName).QueryAsync();
                 var ticker = security[symbol];
