@@ -43,3 +43,64 @@ C:\Users\Admin\Desktop\StockManager\obj\Debug\StockManager.csproj.CoreCompileInp
 C:\Users\Admin\Desktop\StockManager\obj\Debug\StockMan.CB1F0626.Up2Date
 C:\Users\Admin\Desktop\StockManager\obj\Debug\StockManager.exe
 C:\Users\Admin\Desktop\StockManager\obj\Debug\StockManager.pdb
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\StocksDatabase.mdf
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\StocksDatabase_log.ldf
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\StockManager.exe.config
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\StockManager.exe
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\StockManager.pdb
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\CsvHelper.dll
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\Flurl.dll
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\Flurl.Http.dll
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\Skender.Stock.Indicators.dll
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\System.Buffers.dll
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\System.Memory.dll
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\YahooFinanceApi.dll
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\CsvHelper.xml
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\Flurl.xml
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\Flurl.Http.xml
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\Microsoft.Bcl.HashCode.xml
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\Skender.Stock.Indicators.xml
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\System.Buffers.xml
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\System.Memory.xml
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\obj\Debug\StockManager.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\obj\Debug\StockManager.Form1.resources
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\obj\Debug\StockManager.Properties.Resources.resources
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\obj\Debug\StockManager.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\obj\Debug\StockManager.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\obj\Debug\StockMan.CB1F0626.Up2Date
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\obj\Debug\StockManager.exe
+C:\Users\Admin\Desktop\Nowy folder (2)\StockManager\obj\Debug\StockManager.pdb
+C:\Users\Admin\Desktop\StockManager\bin\Debug\CsvHelper.dll
+C:\Users\Admin\Desktop\StockManager\bin\Debug\Flurl.dll
+C:\Users\Admin\Desktop\StockManager\bin\Debug\Flurl.Http.dll
+C:\Users\Admin\Desktop\StockManager\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Admin\Desktop\StockManager\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\Users\Admin\Desktop\StockManager\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Admin\Desktop\StockManager\bin\Debug\System.Buffers.dll
+C:\Users\Admin\Desktop\StockManager\bin\Debug\System.Memory.dll
+C:\Users\Admin\Desktop\StockManager\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Admin\Desktop\StockManager\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Admin\Desktop\StockManager\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Admin\Desktop\StockManager\bin\Debug\YahooFinanceApi.dll
+C:\Users\Admin\Desktop\StockManager\bin\Debug\CsvHelper.xml
+C:\Users\Admin\Desktop\StockManager\bin\Debug\Flurl.xml
+C:\Users\Admin\Desktop\StockManager\bin\Debug\Flurl.Http.xml
+C:\Users\Admin\Desktop\StockManager\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Admin\Desktop\StockManager\bin\Debug\Microsoft.Bcl.HashCode.xml
+C:\Users\Admin\Desktop\StockManager\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Admin\Desktop\StockManager\bin\Debug\System.Buffers.xml
+C:\Users\Admin\Desktop\StockManager\bin\Debug\System.Memory.xml
+C:\Users\Admin\Desktop\StockManager\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Admin\Desktop\StockManager\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Admin\Desktop\StockManager\bin\Debug\System.Threading.Tasks.Extensions.xml

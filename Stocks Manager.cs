@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Data.SqlClient;
 using Skender.Stock.Indicators;
+using YahooFinanceApi;
 
 namespace StockManager
 {
@@ -22,6 +23,7 @@ namespace StockManager
         private void ChartScaling()
         {
             List<decimal> high = new List<decimal>();
+            decimal max, min;
 
             foreach (DataGridViewRow row in dgvData.Rows)
             {
@@ -31,7 +33,15 @@ namespace StockManager
                 }
             }
 
-            decimal max = high.Max();
+            if(dgvData.Rows.Count >= 2)
+            { 
+                max = high.Max();
+            }
+
+            else
+            {
+                max = 100;
+            }
 
             List<decimal> low = new List<decimal>();
 
@@ -43,7 +53,15 @@ namespace StockManager
                 }
             }
 
-            decimal min = low.Min();
+            if (dgvData.Rows.Count >= 2)
+            {
+                min = low.Min();
+            }
+
+            else
+            {
+                min = 0;
+            }
 
             chtChart.ChartAreas["ChartArea1"].AxisY.Maximum = (double)max;
             chtChart.ChartAreas["ChartArea1"].AxisY.Minimum = (double)min;
@@ -54,6 +72,7 @@ namespace StockManager
         private void GenericChartScaling()
         {
             List<decimal> high = new List<decimal>();
+            decimal max;
 
             foreach (DataGridViewRow row in dgvData.Rows)
             {
@@ -63,7 +82,15 @@ namespace StockManager
                 }
             }
 
-            decimal max = high.Max();
+            if (dgvData.Rows.Count >= 2)
+            {
+                max = high.Max();
+            }
+
+            else
+            {
+                max = 100;
+            }
 
             chtChart.ChartAreas["ChartArea1"].AxisY.Maximum = (double)max;
             chtChart.ChartAreas["ChartArea1"].AxisY.Minimum = 0;
@@ -95,6 +122,29 @@ namespace StockManager
         {
             chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.ZoomReset();
             chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.ZoomReset();
+        }
+        private async Task getStockData(string symbol, DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                stocksTableAdapter.ClearBeforeFill;
+                var historicdata = await Yahoo.GetHistoricalAsync(symbol, startDate, endDate);
+                var security = await Yahoo.Symbols(symbol).Fields(Field.LongName).QueryAsync();
+                var ticker = security[symbol];
+                var companyName = ticker[Field.LongName];
+                for (int i = 0; i < historicdata.Count; i += 1)
+                {
+                    stocksTableAdapter.Insert(i + 1, historicdata.ElementAt(i).Open, historicdata.ElementAt(i).Close, historicdata.ElementAt(i).High, historicdata.ElementAt(i).Low, historicdata.ElementAt(i).DateTime);
+                    this.stocksTableAdapter.Fill(this.stocksDatabaseDataSet.Stocks);
+                }
+                chxEnableAutoscalling.Checked = false; //temporary solution
+                chxEnableAutoscalling.Checked = true;
+            }
+
+            catch
+            {
+                MessageBox.Show($"Failed to get symbol: {symbol}", "Error");
+            }
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -320,6 +370,15 @@ namespace StockManager
                 }
                 fs.Close();
             }
+        }
+
+        private void btnFetchData_Click(object sender, EventArgs e)
+        {
+            var symbol = txtSymbol.Text;
+            int months = Convert.ToInt32(txtMonths.Text);
+            DateTime enddate = DateTime.Today;
+            DateTime startdate = DateTime.Today.AddMonths(-months);
+            var awaiter = getStockData(symbol, startdate, enddate);
         }
     }
 }
