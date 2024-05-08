@@ -133,7 +133,7 @@ namespace StockManager
                 var companyName = ticker[Field.LongName];
                 for (int i = 0; i < historicdata.Count; i += 1)
                 {
-                    stocksTableAdapter.Insert(i + 1, historicdata.ElementAt(i).Open, historicdata.ElementAt(i).Close, historicdata.ElementAt(i).High, historicdata.ElementAt(i).Low, historicdata.ElementAt(i).DateTime);
+                    stocksTableAdapter.Insert(i + 1, historicdata.ElementAt(i).Open, historicdata.ElementAt(i).Close, historicdata.ElementAt(i).High, historicdata.ElementAt(i).Low, historicdata.ElementAt(i).DateTime, Convert.ToInt32(historicdata.ElementAt(i).Volume));
                     this.stocksTableAdapter.Fill(this.stocksDatabaseDataSet.Stocks);
                 }
                 chxEnableAutoscalling.Checked = false; //temporary solution
@@ -181,9 +181,16 @@ namespace StockManager
 
                 chtChart.Legends.Clear();
 
+                chtChart.Series["Stock Value"].YAxisType = AxisType.Primary;
                 chtChart.Series["Stock Value"].XValueMember = "Date";
                 chtChart.Series["Stock Value"].YValueMembers = "Close";
                 chtChart.Series["Stock Value"].XValueType = ChartValueType.Date;
+
+                chtChart.Series["Volume"].YAxisType = AxisType.Secondary;
+                chtChart.Series["Volume"].XValueMember = "Date";
+                chtChart.Series["Volume"].YValueMembers = "Volume";
+                chtChart.Series["Volume"].XValueType = ChartValueType.Date;
+                chtChart.Series["Volume"].Color = Color.FromArgb(70, 150, 150, 150);
 
                 chtChart.DataManipulator.IsStartFromFirst = true;
                 chtChart.DataSource = stocksDatabaseDataSet.Stocks;
@@ -202,10 +209,17 @@ namespace StockManager
 
                 chtChart.Legends.Clear();
 
+                chtChart.Series["Stock Value"].YAxisType = AxisType.Primary;
                 chtChart.Series["Stock Value"].XValueMember = "Date";
                 chtChart.Series["Stock Value"].YValueMembers = "High,Low,Open,Close";
                 chtChart.Series["Stock Value"].XValueType = ChartValueType.Date;
                 chtChart.Series["Stock Value"]["ShowOpenClose"] = "Both";
+
+                chtChart.Series["Volume"].YAxisType = AxisType.Secondary;
+                chtChart.Series["Volume"].XValueMember = "Date";
+                chtChart.Series["Volume"].YValueMembers = "Volume";
+                chtChart.Series["Volume"].XValueType = ChartValueType.Date;
+                chtChart.Series["Volume"].Color = Color.FromArgb(70, 150, 150, 150);
 
                 chtChart.DataManipulator.IsStartFromFirst = true;
                 chtChart.DataSource = stocksDatabaseDataSet.Stocks;
@@ -224,11 +238,18 @@ namespace StockManager
 
                 chtChart.Legends.Clear();
 
+                chtChart.Series["Stock Value"].YAxisType = AxisType.Primary;
                 chtChart.Series["Stock Value"].XValueMember = "Date";
                 chtChart.Series["Stock Value"].YValueMembers = "High,Low,Open,Close";
                 chtChart.Series["Stock Value"].XValueType = ChartValueType.Date;
                 chtChart.Series["Stock Value"].CustomProperties = "PriceDownColor=Red,PriceUpColor=Green";
                 chtChart.Series["Stock Value"]["ShowOpenClose"] = "Both";
+
+                chtChart.Series["Volume"].YAxisType = AxisType.Secondary;
+                chtChart.Series["Volume"].XValueMember = "Date";
+                chtChart.Series["Volume"].YValueMembers = "Volume";
+                chtChart.Series["Volume"].XValueType = ChartValueType.Date;
+                chtChart.Series["Volume"].Color = Color.FromArgb(70,150,150,150);
 
                 chtChart.DataManipulator.IsStartFromFirst = true;
                 chtChart.DataSource = stocksDatabaseDataSet.Stocks;
