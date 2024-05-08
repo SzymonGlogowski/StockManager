@@ -86,6 +86,7 @@
             // 
             this.dgvData.AllowUserToAddRows = false;
             this.dgvData.AutoGenerateColumns = false;
+            this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.candleNumberDataGridViewTextBoxColumn,
