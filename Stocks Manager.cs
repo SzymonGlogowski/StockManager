@@ -11,6 +11,11 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.Data.SqlClient;
 using Skender.Stock.Indicators;
 using YahooFinanceApi;
+using System.Collections.ObjectModel;
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Xml.Linq;
 
 namespace StockManager
 {
@@ -19,6 +24,11 @@ namespace StockManager
         public Form1()
         {
             InitializeComponent();
+        }
+
+        public class RowData
+        {
+            public Dictionary<string, object> Cells { get; set; }
         }
         private void ChartScaling()
         {
@@ -280,17 +290,18 @@ namespace StockManager
         {
             if(cbxIndicators.SelectedIndex == 0)
             {
+                chtIndicators.Series.Clear();
                 Series RSI = chtIndicators.Series.Add("RSI");
                 chtIndicators.Series["RSI"].ChartType = SeriesChartType.Line;
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.Maximum = 100.0;
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.Minimum = 0.0;
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Maximum = 100.0;
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Minimum = 0.0;
 
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval = 100.0 / 10.0;
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval = 100.0 / 10.0;
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
 
                 //chtIndicators.ChartAreas["ChartArea1"].AxisX.Minimum = xAxisMin;
                 //chtIndicators.ChartAreas["ChartArea1"].AxisX.Maximum = xAxisMax;
@@ -300,34 +311,226 @@ namespace StockManager
 
                 chtIndicators.Legends.Clear();
 
-                List<DateTime> dates = new List<DateTime>();
+                /*List<RowData> rowDataList = new List<RowData>();
 
                 foreach (DataGridViewRow row in dgvData.Rows)
                 {
-                    if (null != row && null != row.Cells[5].Value)
+                    if (!row.IsNewRow)
                     {
-                        dates.Add(Convert.ToDateTime(row.Cells[5].Value.ToString()));
+                        RowData rowData = new RowData();
+                        rowData.Cells = new Dictionary<string, object>();
+
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            if (cell.ColumnIndex == 5)
+                            {
+                            rowData.Cells[cell.OwningColumn.HeaderText] = cell.Value;
+                            }
+                        }
+
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            if (cell.ColumnIndex == 1)
+                            {
+                                rowData.Cells[cell.OwningColumn.HeaderText] = cell.Value;
+                            }
+                        }
+
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            if (cell.ColumnIndex == 3)
+                            {
+                                rowData.Cells[cell.OwningColumn.HeaderText] = cell.Value;
+                            }
+                        }
+
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            if (cell.ColumnIndex == 4)
+                            {
+                                rowData.Cells[cell.OwningColumn.HeaderText] = cell.Value;
+                            }
+                        }
+
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            if (cell.ColumnIndex == 2)
+                            {
+                                rowData.Cells[cell.OwningColumn.HeaderText] = cell.Value;
+                            }
+                        }
+
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            if (cell.ColumnIndex == 6)
+                            {
+                            rowData.Cells[cell.OwningColumn.HeaderText] = cell.Value;
+                            }
+                        }
+                        rowDataList.Add(rowData);
                     }
                 }
+                var jsonwr = JsonConvert.SerializeObject(rowDataList, Formatting.Indented);
+                File.WriteAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json", jsonwr);*/
 
-                List<double> RSIvalue = new List<double>();
+                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                IEnumerable<Quote> quotes = JsonConvert
+                    .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
+                    .ToSortedCollection();
+                IEnumerable<RsiResult> results = quotes.GetRsi(14);
+                List<double> rsivalues = new List<double>();
+                List<DateTime> dates = new List<DateTime>();
 
-                for(int i = 0; i < dates.Count(); i += 1)
+                foreach (RsiResult r in results)
                 {
-                    RSIvalue.Add(50.0);
+                    if (r.Rsi == null)
+                    {
+                        r.Rsi = 0.0;
+                    }
+                    rsivalues.Add((double)r.Rsi);
+                    dates.Add((DateTime)r.Date);
+                    //MessageBox.Show($"RSI on {r.Date} was {r.Rsi}");
                 }
-                
+
                 RSI.Color = Color.Purple;
-                RSI.Points.DataBindXY(dates, RSIvalue);
+                RSI.Points.DataBindXY(dates, rsivalues);
+            }
 
-                //IEnumerable<RsiResult> results = quotes.GetRsi(lookbackPeriods);
+            if (cbxIndicators.SelectedIndex == 1)
+            {
+                chtIndicators.Series.Clear();
+                Series CCI = chtIndicators.Series.Add("CCI");
+                chtIndicators.Series["CCI"].ChartType = SeriesChartType.Line;
 
-                //chtIndicators.DataManipulator.IsStartFromFirst = true;
-                //chtIndicators.DataSource = stocksDatabaseDataSet.Stocks;
-                //chtIndicators.DataBind();*/
+                chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Maximum = 250.0;
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Minimum = -250.0;
+
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval = 100.0 / 10.0;
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
+
+                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Minimum = xAxisMin;
+                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Maximum = xAxisMax;
+
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+
+                chtIndicators.Legends.Clear();
+
+                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                IEnumerable<Quote> quotes = JsonConvert
+                    .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
+                    .ToSortedCollection();
+                IEnumerable<CciResult> results = quotes.GetCci(20);
+                List<double> ccivalues = new List<double>();
+                List<DateTime> dates = new List<DateTime>();
+
+                foreach (CciResult c in results)
+                {
+                    if (c.Cci == null)
+                    {
+                        c.Cci = 0.0;
+                    }
+                    ccivalues.Add((double)c.Cci);
+                    dates.Add((DateTime)c.Date);
+                }
+
+                CCI.Color = Color.DarkKhaki;
+                CCI.Points.DataBindXY(dates, ccivalues);
+            }
+
+            if (cbxIndicators.SelectedIndex == 2)
+            {
+                chtIndicators.Series.Clear();
+                Series williamsR = chtIndicators.Series.Add("WillamsR");
+                chtIndicators.Series["WillamsR"].ChartType = SeriesChartType.Line;
+
+                chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Maximum = 250.0;
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Minimum = -250.0;
+
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval = 100.0 / 10.0;
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
+
+                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Minimum = xAxisMin;
+                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Maximum = xAxisMax;
+
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+
+                chtIndicators.Legends.Clear();
+
+                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                IEnumerable<Quote> quotes = JsonConvert
+                    .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
+                    .ToSortedCollection();
+                IEnumerable<WilliamsResult> results = quotes.GetWilliamsR(10);
+                List<double> willamsRvalues = new List<double>();
+                List<DateTime> dates = new List<DateTime>();
+
+                foreach (WilliamsResult w in results)
+                {
+                    if (w.WilliamsR == null)
+                    {
+                        w.WilliamsR = -100.0;
+                    }
+                    willamsRvalues.Add((double)w.WilliamsR);
+                    dates.Add((DateTime)w.Date);
+                }
+
+                williamsR.Color = Color.DarkBlue;
+                williamsR.Points.DataBindXY(dates, willamsRvalues);
+            }
+
+            if (cbxIndicators.SelectedIndex == 3)
+            {
+                chtIndicators.Series.Clear();
+                Series ultimate = chtIndicators.Series.Add("Ultimate");
+                chtIndicators.Series["Ultimate"].ChartType = SeriesChartType.Line;
+
+                chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Maximum = 250.0;
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Minimum = -250.0;
+
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval = 100.0 / 10.0;
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
+
+                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Minimum = xAxisMin;
+                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Maximum = xAxisMax;
+
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+
+                chtIndicators.Legends.Clear();
+
+                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                IEnumerable<Quote> quotes = JsonConvert
+                    .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
+                    .ToSortedCollection();
+                IEnumerable<UltimateResult> results = quotes.GetUltimate(7,14,28);
+                List<double> ultimatevalues = new List<double>();
+                List<DateTime> dates = new List<DateTime>();
+
+                foreach (UltimateResult w in results)
+                {
+                    if (w.Ultimate == null)
+                    {
+                        w.Ultimate = 0.0;
+                    }
+                    ultimatevalues.Add((double)w.Ultimate);
+                    dates.Add((DateTime)w.Date);
+                }
+
+                ultimate.Color = Color.OrangeRed;
+                ultimate.Points.DataBindXY(dates, ultimatevalues);
             }
         }
-
         private void chxEnableAutoscalling_CheckedChanged(object sender, EventArgs e)
         {
             if (chxEnableAutoscalling.Checked)
@@ -344,7 +547,6 @@ namespace StockManager
                 btnLoad.PerformClick();
             }
         }
-
         private void chxEnableScallingByMarkingArea_CheckedChanged(object sender, EventArgs e)
         {
             if (chxEnableScallingByMarkingArea.Checked)
@@ -391,13 +593,12 @@ namespace StockManager
                 fs.Close();
             }
         }
-
         private void btnFetchData_Click(object sender, EventArgs e)
         {
             var symbol = txtSymbol.Text;
-            int months = Convert.ToInt32(txtMonths.Text);
+            int days = Convert.ToInt32(txtMonths.Text);
             DateTime enddate = DateTime.Today;
-            DateTime startdate = DateTime.Today.AddMonths(-months);
+            DateTime startdate = DateTime.Today.AddDays(-days);
             var awaiter = getStockData(symbol, startdate, enddate);
         }
     }

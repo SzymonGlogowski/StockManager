@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|solutionrelative:stocks manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\stocksdatabasedataset.xsd||{07AC752B-D2B0-4DCD-AD9C-237BF561A30A}",
-      "RelativeMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|solutionrelative:stocksdatabasedataset.xsd||{07AC752B-D2B0-4DCD-AD9C-237BF561A30A}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\stocks manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|solutionrelative:stocks manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\stocksdatabasedataset.xsd||{07AC752B-D2B0-4DCD-AD9C-237BF561A30A}",
+      "RelativeMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|solutionrelative:stocksdatabasedataset.xsd||{07AC752B-D2B0-4DCD-AD9C-237BF561A30A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,14 +26,15 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "StocksDatabaseDataSet.xsd",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\StocksDatabaseDataSet.xsd",
               "RelativeDocumentMoniker": "StocksDatabaseDataSet.xsd",
               "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\StocksDatabaseDataSet.xsd",
               "RelativeToolTip": "StocksDatabaseDataSet.xsd",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003579|",
-              "WhenOpened": "2024-05-02T19:29:31.104Z"
+              "WhenOpened": "2024-05-02T19:29:31.104Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -43,21 +44,22 @@
               "RelativeDocumentMoniker": "Stocks Manager.cs",
               "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\Stocks Manager.cs",
               "RelativeToolTip": "Stocks Manager.cs",
-              "ViewState": "AQIAAIMAAAAAAAAAAAAgwHYAAABVAAAA",
+              "ViewState": "AQIAAPkBAAAAAAAAAAAiwBQCAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-28T20:47:58.115Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Stocks Manager.cs [Projekt]",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\Stocks Manager.cs",
               "RelativeDocumentMoniker": "Stocks Manager.cs",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\StockManager\\Stocks Manager.cs [Projekt]",
-              "RelativeToolTip": "..\\..\\..\\Desktop\\StockManager\\Stocks Manager.cs [Projekt]",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\Stocks Manager.cs [Projekt]",
+              "RelativeToolTip": "Stocks Manager.cs [Projekt]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-28T20:40:48.099Z"
+              "WhenOpened": "2024-04-28T20:40:48.099Z",
+              "EditorCaption": " [Projekt]"
             }
           ]
         }

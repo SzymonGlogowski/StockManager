@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.candleNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -100,7 +100,7 @@
             this.dgvData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvData.Location = new System.Drawing.Point(0, 0);
             this.dgvData.Name = "dgvData";
-            this.dgvData.Size = new System.Drawing.Size(725, 195);
+            this.dgvData.Size = new System.Drawing.Size(725, 212);
             this.dgvData.TabIndex = 0;
             // 
             // candleNumberDataGridViewTextBoxColumn
@@ -157,26 +157,26 @@
             // 
             // chtChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chtChart.ChartAreas.Add(chartArea1);
+            chartArea7.Name = "ChartArea1";
+            this.chtChart.ChartAreas.Add(chartArea7);
             this.chtChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chtChart.Legends.Add(legend1);
+            legend7.Name = "Legend1";
+            this.chtChart.Legends.Add(legend7);
             this.chtChart.Location = new System.Drawing.Point(0, 0);
             this.chtChart.Name = "chtChart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
-            series1.IsXValueIndexed = true;
-            series1.Legend = "Legend1";
-            series1.Name = "Stock Value";
-            series1.YValuesPerPoint = 4;
-            series2.ChartArea = "ChartArea1";
-            series2.Color = System.Drawing.Color.Transparent;
-            series2.IsXValueIndexed = true;
-            series2.Legend = "Legend1";
-            series2.Name = "Volume";
-            this.chtChart.Series.Add(series1);
-            this.chtChart.Series.Add(series2);
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
+            series10.IsXValueIndexed = true;
+            series10.Legend = "Legend1";
+            series10.Name = "Stock Value";
+            series10.YValuesPerPoint = 4;
+            series11.ChartArea = "ChartArea1";
+            series11.Color = System.Drawing.Color.Transparent;
+            series11.IsXValueIndexed = true;
+            series11.Legend = "Legend1";
+            series11.Name = "Volume";
+            this.chtChart.Series.Add(series10);
+            this.chtChart.Series.Add(series11);
             this.chtChart.Size = new System.Drawing.Size(959, 515);
             this.chtChart.TabIndex = 1;
             this.chtChart.Text = "Chart";
@@ -219,28 +219,32 @@
             // 
             this.cbxIndicators.FormattingEnabled = true;
             this.cbxIndicators.Items.AddRange(new object[] {
-            "RSI"});
+            "RSI",
+            "CCI",
+            "%R Willams",
+            "Ultimate"});
             this.cbxIndicators.Location = new System.Drawing.Point(104, 3);
             this.cbxIndicators.Name = "cbxIndicators";
             this.cbxIndicators.Size = new System.Drawing.Size(95, 21);
             this.cbxIndicators.TabIndex = 0;
+            this.cbxIndicators.Text = "RSI";
             this.cbxIndicators.SelectedIndexChanged += new System.EventHandler(this.cbxIndicators_SelectedIndexChanged);
             // 
             // chtIndicators
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chtIndicators.ChartAreas.Add(chartArea2);
+            chartArea8.Name = "ChartArea1";
+            this.chtIndicators.ChartAreas.Add(chartArea8);
             this.chtIndicators.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chtIndicators.Legends.Add(legend2);
+            legend8.Name = "Legend1";
+            this.chtIndicators.Legends.Add(legend8);
             this.chtIndicators.Location = new System.Drawing.Point(0, 0);
             this.chtIndicators.Name = "chtIndicators";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chtIndicators.Series.Add(series3);
-            this.chtIndicators.Size = new System.Drawing.Size(959, 216);
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series12.Legend = "Legend1";
+            series12.Name = "Series1";
+            this.chtIndicators.Series.Add(series12);
+            this.chtIndicators.Size = new System.Drawing.Size(959, 199);
             this.chtIndicators.TabIndex = 6;
             this.chtIndicators.Text = "Indicators";
             // 
@@ -313,7 +317,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer2.Size = new System.Drawing.Size(959, 415);
-            this.splitContainer2.SplitterDistance = 216;
+            this.splitContainer2.SplitterDistance = 199;
             this.splitContainer2.TabIndex = 0;
             // 
             // splitContainer3
@@ -340,7 +344,7 @@
             this.splitContainer3.Panel2.Controls.Add(this.cbxIndicators);
             this.splitContainer3.Panel2.Controls.Add(this.btnSave);
             this.splitContainer3.Panel2.Controls.Add(this.btnLoad);
-            this.splitContainer3.Size = new System.Drawing.Size(959, 195);
+            this.splitContainer3.Size = new System.Drawing.Size(959, 212);
             this.splitContainer3.SplitterDistance = 725;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -350,7 +354,7 @@
             this.txtMonths.Name = "txtMonths";
             this.txtMonths.Size = new System.Drawing.Size(100, 20);
             this.txtMonths.TabIndex = 13;
-            this.txtMonths.Text = "3";
+            this.txtMonths.Text = "30";
             // 
             // txtSymbol
             // 
@@ -374,7 +378,7 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 195);
+            this.splitter1.Size = new System.Drawing.Size(3, 212);
             this.splitter1.TabIndex = 10;
             this.splitter1.TabStop = false;
             // 

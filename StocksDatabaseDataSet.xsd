@@ -107,7 +107,7 @@ SELECT [Candle Number], [Open], [Close], High, Low, Date, Volume FROM Stocks WHE
               <xs:element name="High" msprop:Generator_ColumnPropNameInTable="HighColumn" msprop:Generator_ColumnPropNameInRow="High" msprop:Generator_UserColumnName="High" msprop:Generator_ColumnVarNameInTable="columnHigh" type="xs:decimal" minOccurs="0" />
               <xs:element name="Low" msprop:Generator_ColumnPropNameInTable="LowColumn" msprop:Generator_ColumnPropNameInRow="Low" msprop:Generator_UserColumnName="Low" msprop:Generator_ColumnVarNameInTable="columnLow" type="xs:decimal" minOccurs="0" />
               <xs:element name="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_UserColumnName="Date" msprop:Generator_ColumnVarNameInTable="columnDate" type="xs:dateTime" />
-              <xs:element name="Volume" msprop:Generator_ColumnPropNameInRow="Volume" msprop:Generator_ColumnPropNameInTable="VolumeColumn" msprop:Generator_ColumnVarNameInTable="columnVolume" msprop:Generator_UserColumnName="Volume" type="xs:int" minOccurs="0" />
+              <xs:element name="Volume" msprop:Generator_UserColumnName="Volume" msprop:Generator_ColumnPropNameInTable="VolumeColumn" msprop:Generator_ColumnPropNameInRow="Volume" msprop:Generator_ColumnVarNameInTable="columnVolume" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
