@@ -133,6 +133,29 @@ namespace StockManager
             chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.ZoomReset();
             chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.ZoomReset();
         }
+        private void PrepareJson()
+        {
+            List<object> stockObjects = new List<object>();
+
+            foreach (DataGridViewRow row in dgvData.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    var Stock = new
+                    {
+                        Date = row.Cells[5].Value,
+                        Open = row.Cells[1].Value,
+                        High = row.Cells[3].Value,
+                        Low = row.Cells[4].Value,
+                        Close = row.Cells[2].Value,
+                        Volume = row.Cells[6].Value,
+                    };
+                    stockObjects.Add(Stock);
+                }
+            }
+            var jsonwr = JsonConvert.SerializeObject(stockObjects, Formatting.Indented);
+            File.WriteAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json", jsonwr);
+        }
         private async Task getStockData(string symbol, DateTime startDate, DateTime endDate)
         {
             try
@@ -311,68 +334,7 @@ namespace StockManager
 
                 chtIndicators.Legends.Clear();
 
-                /*List<RowData> rowDataList = new List<RowData>();
-
-                foreach (DataGridViewRow row in dgvData.Rows)
-                {
-                    if (!row.IsNewRow)
-                    {
-                        RowData rowData = new RowData();
-                        rowData.Cells = new Dictionary<string, object>();
-
-                        foreach (DataGridViewCell cell in row.Cells)
-                        {
-                            if (cell.ColumnIndex == 5)
-                            {
-                            rowData.Cells[cell.OwningColumn.HeaderText] = cell.Value;
-                            }
-                        }
-
-                        foreach (DataGridViewCell cell in row.Cells)
-                        {
-                            if (cell.ColumnIndex == 1)
-                            {
-                                rowData.Cells[cell.OwningColumn.HeaderText] = cell.Value;
-                            }
-                        }
-
-                        foreach (DataGridViewCell cell in row.Cells)
-                        {
-                            if (cell.ColumnIndex == 3)
-                            {
-                                rowData.Cells[cell.OwningColumn.HeaderText] = cell.Value;
-                            }
-                        }
-
-                        foreach (DataGridViewCell cell in row.Cells)
-                        {
-                            if (cell.ColumnIndex == 4)
-                            {
-                                rowData.Cells[cell.OwningColumn.HeaderText] = cell.Value;
-                            }
-                        }
-
-                        foreach (DataGridViewCell cell in row.Cells)
-                        {
-                            if (cell.ColumnIndex == 2)
-                            {
-                                rowData.Cells[cell.OwningColumn.HeaderText] = cell.Value;
-                            }
-                        }
-
-                        foreach (DataGridViewCell cell in row.Cells)
-                        {
-                            if (cell.ColumnIndex == 6)
-                            {
-                            rowData.Cells[cell.OwningColumn.HeaderText] = cell.Value;
-                            }
-                        }
-                        rowDataList.Add(rowData);
-                    }
-                }
-                var jsonwr = JsonConvert.SerializeObject(rowDataList, Formatting.Indented);
-                File.WriteAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json", jsonwr);*/
-
+                PrepareJson();
                 var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
@@ -388,14 +350,12 @@ namespace StockManager
                         r.Rsi = 0.0;
                     }
                     rsivalues.Add((double)r.Rsi);
-                    dates.Add((DateTime)r.Date);
-                    //MessageBox.Show($"RSI on {r.Date} was {r.Rsi}");
+                    dates.Add(r.Date);
                 }
 
                 RSI.Color = Color.Purple;
                 RSI.Points.DataBindXY(dates, rsivalues);
             }
-
             if (cbxIndicators.SelectedIndex == 1)
             {
                 chtIndicators.Series.Clear();
@@ -419,6 +379,7 @@ namespace StockManager
 
                 chtIndicators.Legends.Clear();
 
+                PrepareJson();
                 var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
@@ -434,13 +395,12 @@ namespace StockManager
                         c.Cci = 0.0;
                     }
                     ccivalues.Add((double)c.Cci);
-                    dates.Add((DateTime)c.Date);
+                    dates.Add(c.Date);
                 }
 
                 CCI.Color = Color.DarkKhaki;
                 CCI.Points.DataBindXY(dates, ccivalues);
             }
-
             if (cbxIndicators.SelectedIndex == 2)
             {
                 chtIndicators.Series.Clear();
@@ -464,6 +424,7 @@ namespace StockManager
 
                 chtIndicators.Legends.Clear();
 
+                PrepareJson();
                 var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
@@ -479,13 +440,12 @@ namespace StockManager
                         w.WilliamsR = -100.0;
                     }
                     willamsRvalues.Add((double)w.WilliamsR);
-                    dates.Add((DateTime)w.Date);
+                    dates.Add(w.Date);
                 }
 
                 williamsR.Color = Color.DarkBlue;
                 williamsR.Points.DataBindXY(dates, willamsRvalues);
             }
-
             if (cbxIndicators.SelectedIndex == 3)
             {
                 chtIndicators.Series.Clear();
@@ -509,6 +469,7 @@ namespace StockManager
 
                 chtIndicators.Legends.Clear();
 
+                PrepareJson();
                 var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
@@ -517,18 +478,63 @@ namespace StockManager
                 List<double> ultimatevalues = new List<double>();
                 List<DateTime> dates = new List<DateTime>();
 
-                foreach (UltimateResult w in results)
+                foreach (UltimateResult u in results)
                 {
-                    if (w.Ultimate == null)
+                    if (u.Ultimate == null)
                     {
-                        w.Ultimate = 0.0;
+                        u.Ultimate = 0.0;
                     }
-                    ultimatevalues.Add((double)w.Ultimate);
-                    dates.Add((DateTime)w.Date);
+                    ultimatevalues.Add((double)u.Ultimate);
+                    dates.Add(u.Date);
                 }
 
                 ultimate.Color = Color.OrangeRed;
                 ultimate.Points.DataBindXY(dates, ultimatevalues);
+            }
+            if (cbxIndicators.SelectedIndex == 4)
+            {
+                chtIndicators.Series.Clear();
+                Series mfi = chtIndicators.Series.Add("MFI");
+                chtIndicators.Series["MFI"].ChartType = SeriesChartType.Line;
+
+                chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Maximum = 250.0;
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Minimum = -250.0;
+
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval = 100.0 / 10.0;
+                //chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
+
+                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Minimum = xAxisMin;
+                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Maximum = xAxisMax;
+
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
+                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+
+                chtIndicators.Legends.Clear();
+
+                PrepareJson();
+                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                IEnumerable<Quote> quotes = JsonConvert
+                    .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
+                    .ToSortedCollection();
+                IEnumerable<MfiResult> results = quotes.GetMfi(14);
+                List<double> mfivalues = new List<double>();
+                List<DateTime> dates = new List<DateTime>();
+
+                foreach (MfiResult m in results)
+                {
+                    if (m.Mfi == null)
+                    {
+                        m.Mfi = 0.0;
+                    }
+                    mfivalues.Add((double)m.Mfi);
+                    dates.Add(m.Date);
+                }
+
+                mfi.Color = Color.DarkSeaGreen;
+                mfi.Points.DataBindXY(dates, mfivalues);
             }
         }
         private void chxEnableAutoscalling_CheckedChanged(object sender, EventArgs e)
