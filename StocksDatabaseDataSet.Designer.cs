@@ -1025,11 +1025,23 @@ SELECT [Candle Number], [Open], [Close], High, Low, Date, Volume FROM Stocks WHE
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT [Candle Number], [Open], [Close], High, Low, Date, Volume FROM Stocks";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"INSERT INTO [Stocks] ([Candle Number], [Open], [Close], [High], [Low], [Date], [Volume]) VALUES (@Candle_Number, @Open, @Close, @High, @Low, @Date, @Volume);
+SELECT [Candle Number], [Open], [Close], High, Low, Date, Volume FROM Stocks WHERE ([Candle Number] = @Candle_Number)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Candle_Number", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Candle Number", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Open", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 4, "Open", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Close", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 4, "Close", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@High", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 4, "High", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Low", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 4, "Low", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Volume", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Volume", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1302,6 +1314,66 @@ SELECT [Candle Number], [Open], [Close], High, Low, Date, Volume FROM Stocks WHE
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(global::System.Nullable<decimal> Open, global::System.Nullable<decimal> Close, global::System.Nullable<decimal> High, global::System.Nullable<decimal> Low, System.DateTime Date, global::System.Nullable<int> Volume, int Original_Candle_Number, global::System.Nullable<decimal> Original_Open, global::System.Nullable<decimal> Original_Close, global::System.Nullable<decimal> Original_High, global::System.Nullable<decimal> Original_Low, System.DateTime Original_Date, global::System.Nullable<int> Original_Volume) {
             return this.Update(Original_Candle_Number, Open, Close, High, Low, Date, Volume, Original_Candle_Number, Original_Open, Original_Close, Original_High, Original_Low, Original_Date, Original_Volume);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertQuery(int Candle_Number, global::System.Nullable<decimal> Open, global::System.Nullable<decimal> Close, global::System.Nullable<decimal> High, global::System.Nullable<decimal> Low, string Date, global::System.Nullable<int> Volume) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((int)(Candle_Number));
+            if ((Open.HasValue == true)) {
+                command.Parameters[1].Value = ((decimal)(Open.Value));
+            }
+            else {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((Close.HasValue == true)) {
+                command.Parameters[2].Value = ((decimal)(Close.Value));
+            }
+            else {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((High.HasValue == true)) {
+                command.Parameters[3].Value = ((decimal)(High.Value));
+            }
+            else {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((Low.HasValue == true)) {
+                command.Parameters[4].Value = ((decimal)(Low.Value));
+            }
+            else {
+                command.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((Date == null)) {
+                throw new global::System.ArgumentNullException("Date");
+            }
+            else {
+                command.Parameters[5].Value = ((string)(Date));
+            }
+            if ((Volume.HasValue == true)) {
+                command.Parameters[6].Value = ((int)(Volume.Value));
+            }
+            else {
+                command.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     

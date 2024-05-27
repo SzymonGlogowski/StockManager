@@ -128,10 +128,20 @@ namespace StockManager
             chtChart.ChartAreas["ChartArea1"].CursorY.AutoScroll = false;
             chtChart.ChartAreas["ChartArea1"].CursorY.IsUserSelectionEnabled = false;
         }
-        private void ZoomReset()
+        private void FullZoomReset()
         {
-            chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.ZoomReset();
-            chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.ZoomReset();
+            while (chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.IsZoomed || chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.IsZoomed)
+            {
+                if (chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.IsZoomed)
+                {
+                    chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.ZoomReset();
+                }
+
+                if (chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.IsZoomed)
+                {
+                    chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.ZoomReset();
+                }
+            }
         }
         private void PrepareJson()
         {
@@ -347,7 +357,7 @@ namespace StockManager
                 {
                     if (r.Rsi == null)
                     {
-                        r.Rsi = 0.0;
+                        r.Rsi = 50.0;
                     }
                     rsivalues.Add((double)r.Rsi);
                     dates.Add(r.Date);
@@ -404,7 +414,7 @@ namespace StockManager
             if (cbxIndicators.SelectedIndex == 2)
             {
                 chtIndicators.Series.Clear();
-                Series williamsR = chtIndicators.Series.Add("WillamsR");
+                Series WilliamsR = chtIndicators.Series.Add("WillamsR");
                 chtIndicators.Series["WillamsR"].ChartType = SeriesChartType.Line;
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
@@ -437,19 +447,19 @@ namespace StockManager
                 {
                     if (w.WilliamsR == null)
                     {
-                        w.WilliamsR = -100.0;
+                        w.WilliamsR = -50.0;
                     }
                     willamsRvalues.Add((double)w.WilliamsR);
                     dates.Add(w.Date);
                 }
 
-                williamsR.Color = Color.DarkBlue;
-                williamsR.Points.DataBindXY(dates, willamsRvalues);
+                WilliamsR.Color = Color.DarkBlue;
+                WilliamsR.Points.DataBindXY(dates, willamsRvalues);
             }
             if (cbxIndicators.SelectedIndex == 3)
             {
                 chtIndicators.Series.Clear();
-                Series ultimate = chtIndicators.Series.Add("Ultimate");
+                Series Ultimate = chtIndicators.Series.Add("Ultimate");
                 chtIndicators.Series["Ultimate"].ChartType = SeriesChartType.Line;
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
@@ -482,14 +492,14 @@ namespace StockManager
                 {
                     if (u.Ultimate == null)
                     {
-                        u.Ultimate = 0.0;
+                        u.Ultimate = 50.0;
                     }
                     ultimatevalues.Add((double)u.Ultimate);
                     dates.Add(u.Date);
                 }
 
-                ultimate.Color = Color.OrangeRed;
-                ultimate.Points.DataBindXY(dates, ultimatevalues);
+                Ultimate.Color = Color.OrangeRed;
+                Ultimate.Points.DataBindXY(dates, ultimatevalues);
             }
             if (cbxIndicators.SelectedIndex == 4)
             {
@@ -527,7 +537,7 @@ namespace StockManager
                 {
                     if (m.Mfi == null)
                     {
-                        m.Mfi = 0.0;
+                        m.Mfi = 50.0;
                     }
                     mfivalues.Add((double)m.Mfi);
                     dates.Add(m.Date);
@@ -566,7 +576,7 @@ namespace StockManager
             {
                 chxEnableAutoscalling.Enabled = true;
                 DisableScallingByMarkingArea();
-                ZoomReset();
+                FullZoomReset();
                 btnLoad.PerformClick();
             }
         }

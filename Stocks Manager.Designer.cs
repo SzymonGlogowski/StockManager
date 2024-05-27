@@ -175,6 +175,7 @@
             series2.IsXValueIndexed = true;
             series2.Legend = "Legend1";
             series2.Name = "Volume";
+            series2.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
             this.chtChart.Series.Add(series1);
             this.chtChart.Series.Add(series2);
             this.chtChart.Size = new System.Drawing.Size(959, 515);
@@ -242,6 +243,7 @@
             this.chtIndicators.Name = "chtIndicators";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.IsXValueIndexed = true;
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             this.chtIndicators.Series.Add(series3);
