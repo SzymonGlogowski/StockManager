@@ -157,6 +157,11 @@
             // 
             // chtChart
             // 
+            chartArea1.InnerPlotPosition.Auto = false;
+            chartArea1.InnerPlotPosition.Height = 85F;
+            chartArea1.InnerPlotPosition.Width = 80F;
+            chartArea1.InnerPlotPosition.X = 10F;
+            chartArea1.InnerPlotPosition.Y = 5F;
             chartArea1.Name = "ChartArea1";
             this.chtChart.ChartAreas.Add(chartArea1);
             this.chtChart.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -234,6 +239,11 @@
             // 
             // chtIndicators
             // 
+            chartArea2.InnerPlotPosition.Auto = false;
+            chartArea2.InnerPlotPosition.Height = 85F;
+            chartArea2.InnerPlotPosition.Width = 80F;
+            chartArea2.InnerPlotPosition.X = 10F;
+            chartArea2.InnerPlotPosition.Y = 5F;
             chartArea2.Name = "ChartArea1";
             this.chtIndicators.ChartAreas.Add(chartArea2);
             this.chtIndicators.Dock = System.Windows.Forms.DockStyle.Fill;
