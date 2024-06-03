@@ -26,6 +26,10 @@ namespace StockManager
         {
             get
             {
+                if (txtInterval.Text == "" || txtInterval.Text == null)
+                {
+                    return 14;
+                }
                 return Convert.ToInt32(txtInterval.Text);
             }
         }

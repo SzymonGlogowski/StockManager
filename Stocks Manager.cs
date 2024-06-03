@@ -361,7 +361,7 @@ namespace StockManager
                 {
                     if (r.Rsi == null)
                     {
-                        r.Rsi = 50.0;
+                        r.Rsi = double.NaN;
                     }
                     rsivalues.Add((double)r.Rsi);
                     dates.Add(r.Date);
@@ -401,7 +401,7 @@ namespace StockManager
                 {
                     if (c.Cci == null)
                     {
-                        c.Cci = 0.0;
+                        c.Cci = double.NaN;
                     }
                     ccivalues.Add((double)c.Cci);
                     dates.Add(c.Date);
@@ -441,7 +441,7 @@ namespace StockManager
                 {
                     if (w.WilliamsR == null)
                     {
-                        w.WilliamsR = -50.0;
+                        w.WilliamsR = double.NaN;
                     }
                     willamsRvalues.Add((double)w.WilliamsR);
                     dates.Add(w.Date);
@@ -481,7 +481,7 @@ namespace StockManager
                 {
                     if (u.Ultimate == null)
                     {
-                        u.Ultimate = 50.0;
+                        u.Ultimate = double.NaN;
                     }
                     ultimatevalues.Add((double)u.Ultimate);
                     dates.Add(u.Date);
@@ -521,7 +521,7 @@ namespace StockManager
                 {
                     if (m.Mfi == null)
                     {
-                        m.Mfi = 50.0;
+                        m.Mfi = double.NaN;
                     }
                     mfivalues.Add((double)m.Mfi);
                     dates.Add(m.Date);

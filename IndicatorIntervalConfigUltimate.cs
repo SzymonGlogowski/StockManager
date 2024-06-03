@@ -26,6 +26,10 @@ namespace StockManager
         {
             get
             {
+                if (txtInterval1.Text == "" || txtInterval1.Text == null)
+                {
+                    return 7;
+                }
                 return Convert.ToInt32(txtInterval1.Text);
             }
         }
@@ -33,6 +37,10 @@ namespace StockManager
         {
             get
             {
+                if (txtInterval2.Text == "" || txtInterval2.Text == null)
+                {
+                    return 14;
+                }
                 return Convert.ToInt32(txtInterval2.Text);
             }
         }
@@ -40,6 +48,10 @@ namespace StockManager
         {
             get
             {
+                if (txtInterval3.Text == "" || txtInterval3.Text == null)
+                {
+                    return 28;
+                }
                 return Convert.ToInt32(txtInterval3.Text);
             }
         }
