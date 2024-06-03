@@ -216,8 +216,11 @@ namespace StockManager
                 chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
-                //chtChart.ChartAreas["ChartArea1"].AxisX.Minimum = xAxisMin;
-                //chtChart.ChartAreas["ChartArea1"].AxisX.Maximum = xAxisMax;
+                chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+                chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
+                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
+
+                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
                 chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
@@ -227,12 +230,12 @@ namespace StockManager
                 chtChart.Series["Stock Value"].YAxisType = AxisType.Primary;
                 chtChart.Series["Stock Value"].XValueMember = "Date";
                 chtChart.Series["Stock Value"].YValueMembers = "Close";
-                chtChart.Series["Stock Value"].XValueType = ChartValueType.Date;
+                chtChart.Series["Stock Value"].XValueType = ChartValueType.DateTime;
 
                 chtChart.Series["Volume"].YAxisType = AxisType.Secondary;
                 chtChart.Series["Volume"].XValueMember = "Date";
                 chtChart.Series["Volume"].YValueMembers = "Volume";
-                chtChart.Series["Volume"].XValueType = ChartValueType.Date;
+                chtChart.Series["Volume"].XValueType = ChartValueType.DateTime;
                 chtChart.Series["Volume"].Color = Color.FromArgb(70, 150, 150, 150);
 
                 chtChart.DataManipulator.IsStartFromFirst = true;
@@ -244,8 +247,11 @@ namespace StockManager
                 chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
-                //chtChart.ChartAreas["ChartArea1"].AxisX.Minimum = xAxisMin;
-                //chtChart.ChartAreas["ChartArea1"].AxisX.Maximum = xAxisMax;
+                chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+                chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
+                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
+
+                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
                 chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
@@ -255,13 +261,13 @@ namespace StockManager
                 chtChart.Series["Stock Value"].YAxisType = AxisType.Primary;
                 chtChart.Series["Stock Value"].XValueMember = "Date";
                 chtChart.Series["Stock Value"].YValueMembers = "High,Low,Open,Close";
-                chtChart.Series["Stock Value"].XValueType = ChartValueType.Date;
+                chtChart.Series["Stock Value"].XValueType = ChartValueType.DateTime;
                 chtChart.Series["Stock Value"]["ShowOpenClose"] = "Both";
 
                 chtChart.Series["Volume"].YAxisType = AxisType.Secondary;
                 chtChart.Series["Volume"].XValueMember = "Date";
                 chtChart.Series["Volume"].YValueMembers = "Volume";
-                chtChart.Series["Volume"].XValueType = ChartValueType.Date;
+                chtChart.Series["Volume"].XValueType = ChartValueType.DateTime;
                 chtChart.Series["Volume"].Color = Color.FromArgb(70, 150, 150, 150);
 
                 chtChart.DataManipulator.IsStartFromFirst = true;
@@ -273,8 +279,11 @@ namespace StockManager
                 chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
-                //chtChart.ChartAreas["ChartArea1"].AxisX.Minimum = xAxisMin;
-                //chtChart.ChartAreas["ChartArea1"].AxisX.Maximum = xAxisMax;
+                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+
+                chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+                chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
+                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
 
                 chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
@@ -284,14 +293,14 @@ namespace StockManager
                 chtChart.Series["Stock Value"].YAxisType = AxisType.Primary;
                 chtChart.Series["Stock Value"].XValueMember = "Date";
                 chtChart.Series["Stock Value"].YValueMembers = "High,Low,Open,Close";
-                chtChart.Series["Stock Value"].XValueType = ChartValueType.Date;
+                chtChart.Series["Stock Value"].XValueType = ChartValueType.DateTime;
                 chtChart.Series["Stock Value"].CustomProperties = "PriceDownColor=Red,PriceUpColor=Green";
                 chtChart.Series["Stock Value"]["ShowOpenClose"] = "Both";
 
                 chtChart.Series["Volume"].YAxisType = AxisType.Secondary;
                 chtChart.Series["Volume"].XValueMember = "Date";
                 chtChart.Series["Volume"].YValueMembers = "Volume";
-                chtChart.Series["Volume"].XValueType = ChartValueType.Date;
+                chtChart.Series["Volume"].XValueType = ChartValueType.DateTime;
                 chtChart.Series["Volume"].Color = Color.FromArgb(70,150,150,150);
 
                 chtChart.DataManipulator.IsStartFromFirst = true;
@@ -323,6 +332,8 @@ namespace StockManager
         {
             if(cbxIndicators.SelectedIndex == 0)
             {
+                var IntervalWindow = new IndicatorIntervalConfig();
+                IntervalWindow.ShowDialog();
                 chtIndicators.Series.Clear();
                 Series RSI = chtIndicators.Series.Add("RSI");
                 chtIndicators.Series["RSI"].ChartType = SeriesChartType.Line;
@@ -330,14 +341,7 @@ namespace StockManager
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Maximum = 100.0;
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Minimum = 0.0;
-
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval = 100.0 / 10.0;
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
-
-                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Minimum = xAxisMin;
-                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Maximum = xAxisMax;
+                chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
@@ -349,7 +353,7 @@ namespace StockManager
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
                     .ToSortedCollection();
-                IEnumerable<RsiResult> results = quotes.GetRsi(14);
+                IEnumerable<RsiResult> results = quotes.GetRsi(IntervalWindow.Interval);
                 List<double> rsivalues = new List<double>();
                 List<DateTime> dates = new List<DateTime>();
 
@@ -368,6 +372,8 @@ namespace StockManager
             }
             if (cbxIndicators.SelectedIndex == 1)
             {
+                var IntervalWindow = new IndicatorIntervalConfig();
+                IntervalWindow.ShowDialog();
                 chtIndicators.Series.Clear();
                 Series CCI = chtIndicators.Series.Add("CCI");
                 chtIndicators.Series["CCI"].ChartType = SeriesChartType.Line;
@@ -375,14 +381,7 @@ namespace StockManager
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Maximum = 250.0;
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Minimum = -250.0;
-
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval = 100.0 / 10.0;
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
-
-                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Minimum = xAxisMin;
-                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Maximum = xAxisMax;
+                chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
@@ -394,7 +393,7 @@ namespace StockManager
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
                     .ToSortedCollection();
-                IEnumerable<CciResult> results = quotes.GetCci(20);
+                IEnumerable<CciResult> results = quotes.GetCci(IntervalWindow.Interval);
                 List<double> ccivalues = new List<double>();
                 List<DateTime> dates = new List<DateTime>();
 
@@ -413,6 +412,8 @@ namespace StockManager
             }
             if (cbxIndicators.SelectedIndex == 2)
             {
+                var IntervalWindow = new IndicatorIntervalConfig();
+                IntervalWindow.ShowDialog();
                 chtIndicators.Series.Clear();
                 Series WilliamsR = chtIndicators.Series.Add("WillamsR");
                 chtIndicators.Series["WillamsR"].ChartType = SeriesChartType.Line;
@@ -420,14 +421,7 @@ namespace StockManager
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Maximum = 250.0;
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Minimum = -250.0;
-
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval = 100.0 / 10.0;
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
-
-                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Minimum = xAxisMin;
-                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Maximum = xAxisMax;
+                chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
@@ -439,7 +433,7 @@ namespace StockManager
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
                     .ToSortedCollection();
-                IEnumerable<WilliamsResult> results = quotes.GetWilliamsR(10);
+                IEnumerable<WilliamsResult> results = quotes.GetWilliamsR(IntervalWindow.Interval);
                 List<double> willamsRvalues = new List<double>();
                 List<DateTime> dates = new List<DateTime>();
 
@@ -458,6 +452,8 @@ namespace StockManager
             }
             if (cbxIndicators.SelectedIndex == 3)
             {
+                var IntervalWindowUltimate = new IndicatorIntervalConfigUltimate();
+                IntervalWindowUltimate.ShowDialog();
                 chtIndicators.Series.Clear();
                 Series Ultimate = chtIndicators.Series.Add("Ultimate");
                 chtIndicators.Series["Ultimate"].ChartType = SeriesChartType.Line;
@@ -465,14 +461,7 @@ namespace StockManager
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Maximum = 250.0;
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Minimum = -250.0;
-
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval = 100.0 / 10.0;
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
-
-                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Minimum = xAxisMin;
-                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Maximum = xAxisMax;
+                chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
@@ -484,7 +473,7 @@ namespace StockManager
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
                     .ToSortedCollection();
-                IEnumerable<UltimateResult> results = quotes.GetUltimate(7,14,28);
+                IEnumerable<UltimateResult> results = quotes.GetUltimate(IntervalWindowUltimate.Interval1, IntervalWindowUltimate.Interval2, IntervalWindowUltimate.Interval3);
                 List<double> ultimatevalues = new List<double>();
                 List<DateTime> dates = new List<DateTime>();
 
@@ -503,6 +492,8 @@ namespace StockManager
             }
             if (cbxIndicators.SelectedIndex == 4)
             {
+                var IntervalWindow = new IndicatorIntervalConfig();
+                IntervalWindow.ShowDialog();
                 chtIndicators.Series.Clear();
                 Series mfi = chtIndicators.Series.Add("MFI");
                 chtIndicators.Series["MFI"].ChartType = SeriesChartType.Line;
@@ -510,14 +501,7 @@ namespace StockManager
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Maximum = 250.0;
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Minimum = -250.0;
-
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval = 100.0 / 10.0;
-                //chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtIndicators.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
-
-                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Minimum = xAxisMin;
-                //chtIndicators.ChartAreas["ChartArea1"].AxisX.Maximum = xAxisMax;
+                chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
@@ -529,7 +513,7 @@ namespace StockManager
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
                     .ToSortedCollection();
-                IEnumerable<MfiResult> results = quotes.GetMfi(14);
+                IEnumerable<MfiResult> results = quotes.GetMfi(IntervalWindow.Interval);
                 List<double> mfivalues = new List<double>();
                 List<DateTime> dates = new List<DateTime>();
 

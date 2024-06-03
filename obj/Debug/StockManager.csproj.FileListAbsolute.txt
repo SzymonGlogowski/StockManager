@@ -143,3 +143,5 @@ C:\Users\Admin\Documents\GitHub\StockManager\bin\Debug\System.Runtime.CompilerSe
 C:\Users\Admin\Documents\GitHub\StockManager\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Admin\Documents\GitHub\StockManager\obj\Debug\StockMan.CB1F0626.Up2Date
 C:\Users\Admin\Documents\GitHub\StockManager\bin\Debug\Json.Net.dll
+C:\Users\Admin\Documents\GitHub\StockManager\obj\Debug\StockManager.IndicatorIntervalConfig.resources
+C:\Users\Admin\Documents\GitHub\StockManager\obj\Debug\StockManager.IndicatorIntervalConfigUltimate.resources

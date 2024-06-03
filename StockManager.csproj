@@ -108,6 +108,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IndicatorIntervalConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IndicatorIntervalConfig.Designer.cs">
+      <DependentUpon>IndicatorIntervalConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IndicatorIntervalConfigUltimate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IndicatorIntervalConfigUltimate.Designer.cs">
+      <DependentUpon>IndicatorIntervalConfigUltimate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Stocks Manager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +133,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StocksDatabaseDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="IndicatorIntervalConfig.resx">
+      <DependentUpon>IndicatorIntervalConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IndicatorIntervalConfigUltimate.resx">
+      <DependentUpon>IndicatorIntervalConfigUltimate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Stocks Manager.resx">
       <DependentUpon>Stocks Manager.cs</DependentUpon>
     </EmbeddedResource>
