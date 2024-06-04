@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,26 +13,60 @@ namespace StockManager
 {
     public partial class IndicatorIntervalConfig : Form
     {
-        public IndicatorIntervalConfig()
-        {
-            InitializeComponent();
-        }
-
+        public int Interval { get; set; }
         private void btnApply_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        public int Interval
+        public IndicatorIntervalConfig(int cbxIndicators)
         {
-            get
+            InitializeComponent();
+            if (cbxIndicators == 0)
             {
-
                 if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) == 0)
                 {
-                    return 14;
+                    Interval = 14;
                 }
-                return Convert.ToInt32(txtInterval.Text);
+                else
+                {
+                    Interval = Convert.ToInt32(txtInterval.Text);
+                }
+            }
+
+            if (cbxIndicators == 1)
+            {
+                if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) == 0)
+                {
+                    Interval = 20;
+                }
+                else
+                {
+                    Interval = Convert.ToInt32(txtInterval.Text);
+                }
+            }
+
+            if (cbxIndicators == 2)
+            {
+                if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) == 0)
+                {
+                    Interval = 10;
+                }
+                else
+                {
+                    Interval = Convert.ToInt32(txtInterval.Text);
+                }
+            }
+
+            if (cbxIndicators == 4)
+            {
+                if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) == 0)
+                {
+                    Interval = 14;
+                }
+                else
+                {
+                    Interval = Convert.ToInt32(txtInterval.Text);
+                }
             }
         }
     }

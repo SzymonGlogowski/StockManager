@@ -26,7 +26,11 @@ namespace StockManager
             InitializeComponent();
         }
 
-
+        public Boolean cbxIndicatorsVisible
+        {
+            get { return this.cbxIndicators.Visible; }
+            set { this.cbxIndicators.Visible = value; }
+        }
         private void ChartScaling()
         {
             if (dgvData.Rows.Count > 30)
@@ -351,7 +355,7 @@ namespace StockManager
         {
             if(cbxIndicators.SelectedIndex == 0)
             {
-                var IntervalWindow = new IndicatorIntervalConfig();
+                var IntervalWindow = new IndicatorIntervalConfig(cbxIndicators.SelectedIndex);
                 IntervalWindow.ShowDialog();
                 chtIndicators.Series.Clear();
                 Series RSI = chtIndicators.Series.Add("RSI");
@@ -403,7 +407,7 @@ namespace StockManager
             }
             if (cbxIndicators.SelectedIndex == 1)
             {
-                var IntervalWindow = new IndicatorIntervalConfig();
+                var IntervalWindow = new IndicatorIntervalConfig(cbxIndicators.SelectedIndex);
                 IntervalWindow.ShowDialog();
                 chtIndicators.Series.Clear();
                 Series CCI = chtIndicators.Series.Add("CCI");
@@ -455,7 +459,7 @@ namespace StockManager
             }
             if (cbxIndicators.SelectedIndex == 2)
             {
-                var IntervalWindow = new IndicatorIntervalConfig();
+                var IntervalWindow = new IndicatorIntervalConfig(cbxIndicators.SelectedIndex);
                 IntervalWindow.ShowDialog();
                 chtIndicators.Series.Clear();
                 Series WilliamsR = chtIndicators.Series.Add("WillamsR");
@@ -507,7 +511,7 @@ namespace StockManager
             }
             if (cbxIndicators.SelectedIndex == 3)
             {
-                var IntervalWindowUltimate = new IndicatorIntervalConfigUltimate();
+                var IntervalWindowUltimate = new IndicatorIntervalConfigUltimate(cbxIndicators.SelectedIndex);
                 IntervalWindowUltimate.ShowDialog();
                 chtIndicators.Series.Clear();
                 Series Ultimate = chtIndicators.Series.Add("Ultimate");
@@ -540,6 +544,9 @@ namespace StockManager
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
                     .ToSortedCollection();
+                MessageBox.Show(Convert.ToString(IntervalWindowUltimate.Interval1));
+                MessageBox.Show(Convert.ToString(IntervalWindowUltimate.Interval2));
+                MessageBox.Show(Convert.ToString(IntervalWindowUltimate.Interval3));
                 IEnumerable<UltimateResult> results = quotes.GetUltimate(IntervalWindowUltimate.Interval1, IntervalWindowUltimate.Interval2, IntervalWindowUltimate.Interval3);
                 List<double> ultimatevalues = new List<double>();
                 List<string> dates = new List<string>();
@@ -559,7 +566,7 @@ namespace StockManager
             }
             if (cbxIndicators.SelectedIndex == 4)
             {
-                var IntervalWindow = new IndicatorIntervalConfig();
+                var IntervalWindow = new IndicatorIntervalConfig(cbxIndicators.SelectedIndex);
                 IntervalWindow.ShowDialog();
                 chtIndicators.Series.Clear();
                 Series mfi = chtIndicators.Series.Add("MFI");
