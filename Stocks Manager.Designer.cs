@@ -100,7 +100,7 @@
             this.dgvData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvData.Location = new System.Drawing.Point(0, 0);
             this.dgvData.Name = "dgvData";
-            this.dgvData.Size = new System.Drawing.Size(725, 212);
+            this.dgvData.Size = new System.Drawing.Size(725, 161);
             this.dgvData.TabIndex = 0;
             // 
             // candleNumberDataGridViewTextBoxColumn
@@ -208,7 +208,7 @@
             // chtIndicators
             // 
             chartArea1.InnerPlotPosition.Auto = false;
-            chartArea1.InnerPlotPosition.Height = 80F;
+            chartArea1.InnerPlotPosition.Height = 75F;
             chartArea1.InnerPlotPosition.Width = 80F;
             chartArea1.InnerPlotPosition.X = 10F;
             chartArea1.InnerPlotPosition.Y = 5F;
@@ -226,7 +226,7 @@
             series1.Name = "Series1";
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
             this.chtIndicators.Series.Add(series1);
-            this.chtIndicators.Size = new System.Drawing.Size(959, 199);
+            this.chtIndicators.Size = new System.Drawing.Size(959, 250);
             this.chtIndicators.TabIndex = 6;
             this.chtIndicators.Text = "Indicators";
             // 
@@ -330,7 +330,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer2.Size = new System.Drawing.Size(959, 415);
-            this.splitContainer2.SplitterDistance = 199;
+            this.splitContainer2.SplitterDistance = 250;
             this.splitContainer2.TabIndex = 0;
             // 
             // splitContainer3
@@ -357,13 +357,13 @@
             this.splitContainer3.Panel2.Controls.Add(this.cbxIndicators);
             this.splitContainer3.Panel2.Controls.Add(this.btnSave);
             this.splitContainer3.Panel2.Controls.Add(this.btnLoad);
-            this.splitContainer3.Size = new System.Drawing.Size(959, 212);
+            this.splitContainer3.Size = new System.Drawing.Size(959, 161);
             this.splitContainer3.SplitterDistance = 725;
             this.splitContainer3.TabIndex = 0;
             // 
             // txtMonths
             // 
-            this.txtMonths.Location = new System.Drawing.Point(99, 169);
+            this.txtMonths.Location = new System.Drawing.Point(104, 139);
             this.txtMonths.Name = "txtMonths";
             this.txtMonths.Size = new System.Drawing.Size(100, 20);
             this.txtMonths.TabIndex = 13;
@@ -371,7 +371,7 @@
             // 
             // txtSymbol
             // 
-            this.txtSymbol.Location = new System.Drawing.Point(99, 141);
+            this.txtSymbol.Location = new System.Drawing.Point(104, 110);
             this.txtSymbol.Name = "txtSymbol";
             this.txtSymbol.Size = new System.Drawing.Size(100, 20);
             this.txtSymbol.TabIndex = 12;
@@ -379,7 +379,7 @@
             // 
             // btnFetchData
             // 
-            this.btnFetchData.Location = new System.Drawing.Point(3, 138);
+            this.btnFetchData.Location = new System.Drawing.Point(3, 136);
             this.btnFetchData.Name = "btnFetchData";
             this.btnFetchData.Size = new System.Drawing.Size(95, 25);
             this.btnFetchData.TabIndex = 11;
@@ -391,7 +391,7 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 212);
+            this.splitter1.Size = new System.Drawing.Size(3, 161);
             this.splitter1.TabIndex = 10;
             this.splitter1.TabStop = false;
             // 

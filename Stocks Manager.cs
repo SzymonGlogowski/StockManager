@@ -216,9 +216,9 @@ namespace StockManager
                 chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
-                chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
-                chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
-                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
+                //chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+                //chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
+                //chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
 
                 chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
@@ -247,9 +247,9 @@ namespace StockManager
                 chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
-                chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
-                chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
-                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
+                //chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+                //chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
+                //chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
 
                 chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
@@ -281,9 +281,9 @@ namespace StockManager
 
                 chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
-                chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
-                chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
-                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
+                //chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+                //chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
+                //chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
 
                 chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
@@ -355,7 +355,7 @@ namespace StockManager
                     .ToSortedCollection();
                 IEnumerable<RsiResult> results = quotes.GetRsi(IntervalWindow.Interval);
                 List<double> rsivalues = new List<double>();
-                List<DateTime> dates = new List<DateTime>();
+                List<string> dates = new List<string>();
 
                 foreach (RsiResult r in results)
                 {
@@ -364,7 +364,7 @@ namespace StockManager
                         r.Rsi = double.NaN;
                     }
                     rsivalues.Add((double)r.Rsi);
-                    dates.Add(r.Date);
+                    dates.Add(Convert.ToString(r.Date));
                 }
 
                 RSI.Color = Color.Purple;
@@ -395,7 +395,7 @@ namespace StockManager
                     .ToSortedCollection();
                 IEnumerable<CciResult> results = quotes.GetCci(IntervalWindow.Interval);
                 List<double> ccivalues = new List<double>();
-                List<DateTime> dates = new List<DateTime>();
+                List<string> dates = new List<string>();
 
                 foreach (CciResult c in results)
                 {
@@ -404,7 +404,7 @@ namespace StockManager
                         c.Cci = double.NaN;
                     }
                     ccivalues.Add((double)c.Cci);
-                    dates.Add(c.Date);
+                    dates.Add(Convert.ToString(c.Date));
                 }
 
                 CCI.Color = Color.DarkKhaki;
@@ -435,7 +435,7 @@ namespace StockManager
                     .ToSortedCollection();
                 IEnumerable<WilliamsResult> results = quotes.GetWilliamsR(IntervalWindow.Interval);
                 List<double> willamsRvalues = new List<double>();
-                List<DateTime> dates = new List<DateTime>();
+                List<string> dates = new List<string>();
 
                 foreach (WilliamsResult w in results)
                 {
@@ -444,7 +444,7 @@ namespace StockManager
                         w.WilliamsR = double.NaN;
                     }
                     willamsRvalues.Add((double)w.WilliamsR);
-                    dates.Add(w.Date);
+                    dates.Add(Convert.ToString(w.Date));
                 }
 
                 WilliamsR.Color = Color.DarkBlue;
@@ -475,7 +475,7 @@ namespace StockManager
                     .ToSortedCollection();
                 IEnumerable<UltimateResult> results = quotes.GetUltimate(IntervalWindowUltimate.Interval1, IntervalWindowUltimate.Interval2, IntervalWindowUltimate.Interval3);
                 List<double> ultimatevalues = new List<double>();
-                List<DateTime> dates = new List<DateTime>();
+                List<string> dates = new List<string>();
 
                 foreach (UltimateResult u in results)
                 {
@@ -484,7 +484,7 @@ namespace StockManager
                         u.Ultimate = double.NaN;
                     }
                     ultimatevalues.Add((double)u.Ultimate);
-                    dates.Add(u.Date);
+                    dates.Add(Convert.ToString(u.Date));
                 }
 
                 Ultimate.Color = Color.OrangeRed;
@@ -515,7 +515,7 @@ namespace StockManager
                     .ToSortedCollection();
                 IEnumerable<MfiResult> results = quotes.GetMfi(IntervalWindow.Interval);
                 List<double> mfivalues = new List<double>();
-                List<DateTime> dates = new List<DateTime>();
+                List<string> dates = new List<string>();
 
                 foreach (MfiResult m in results)
                 {
@@ -524,7 +524,7 @@ namespace StockManager
                         m.Mfi = double.NaN;
                     }
                     mfivalues.Add((double)m.Mfi);
-                    dates.Add(m.Date);
+                    dates.Add(Convert.ToString(m.Date));
                 }
 
                 mfi.Color = Color.DarkSeaGreen;

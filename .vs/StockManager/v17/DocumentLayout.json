@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|c:\\users\\admin\\documents\\github\\stockmanager\\stocks manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\stocks manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|solutionrelative:stocks manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\stocks manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|c:\\users\\admin\\documents\\github\\stockmanager\\stocks manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|solutionrelative:stocks manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -60,7 +60,7 @@
               "RelativeDocumentMoniker": "Stocks Manager.cs",
               "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\Stocks Manager.cs",
               "RelativeToolTip": "Stocks Manager.cs",
-              "ViewState": "AQIAAFIBAAAAAAAAAAAAAG4BAAAmAAAA",
+              "ViewState": "AQIAAA4BAAAAAAAAAAAowDIBAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-28T20:47:58.115Z",
               "EditorCaption": ""
