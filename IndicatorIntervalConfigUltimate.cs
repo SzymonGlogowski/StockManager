@@ -15,21 +15,11 @@ namespace StockManager
         public int Interval1 { get; set; }
         public int Interval2 { get; set; }
         public int Interval3 { get; set; }
+        public int Index { get; set; }
+
         private void btnApply_Click(object sender, EventArgs e)
         {
-            if (Interval1 >= Interval2 || Interval2 >= Interval3 || Interval1 >= Interval3)
-            {
-                Interval1 = 7;
-                Interval2 = 14;
-                Interval3 = 28;
-            }
-            this.Close();
-        }
-        public IndicatorIntervalConfigUltimate(int cbxIndicators)
-        {
-            InitializeComponent();
-
-            if (cbxIndicators == 3)
+            if (Index == 3)
             {
                 if (txtInterval1.Text == "" || txtInterval1.Text == null || Convert.ToInt32(txtInterval1.Text) == 0)
                 {
@@ -58,6 +48,19 @@ namespace StockManager
                     Interval3 = Convert.ToInt32(txtInterval3.Text);
                 }
             }
+
+            if (Interval1 >= Interval2 || Interval2 >= Interval3 || Interval1 >= Interval3)
+            {
+                Interval1 = 7;
+                Interval2 = 14;
+                Interval3 = 28;
+            }
+            this.Close();
+        }
+        public IndicatorIntervalConfigUltimate(int cbxIndicators)
+        {
+            InitializeComponent();
+            Index = cbxIndicators;
         }
     }
 }

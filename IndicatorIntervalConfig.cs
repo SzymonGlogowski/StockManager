@@ -14,14 +14,10 @@ namespace StockManager
     public partial class IndicatorIntervalConfig : Form
     {
         public int Interval { get; set; }
+        public int Index { get; set; }
         private void btnApply_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
-        public IndicatorIntervalConfig(int cbxIndicators)
-        {
-            InitializeComponent();
-            if (cbxIndicators == 0)
+            if (Index == 0)
             {
                 if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) == 0)
                 {
@@ -33,7 +29,7 @@ namespace StockManager
                 }
             }
 
-            if (cbxIndicators == 1)
+            if (Index == 1)
             {
                 if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) == 0)
                 {
@@ -45,7 +41,7 @@ namespace StockManager
                 }
             }
 
-            if (cbxIndicators == 2)
+            if (Index == 2)
             {
                 if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) == 0)
                 {
@@ -57,7 +53,7 @@ namespace StockManager
                 }
             }
 
-            if (cbxIndicators == 4)
+            if (Index == 4)
             {
                 if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) == 0)
                 {
@@ -68,6 +64,12 @@ namespace StockManager
                     Interval = Convert.ToInt32(txtInterval.Text);
                 }
             }
+            this.Close();
+        }
+        public IndicatorIntervalConfig(int cbxIndicators)
+        {
+            InitializeComponent();
+            Index = cbxIndicators;
         }
     }
 }

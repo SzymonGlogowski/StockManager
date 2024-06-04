@@ -25,12 +25,6 @@ namespace StockManager
         {
             InitializeComponent();
         }
-
-        public Boolean cbxIndicatorsVisible
-        {
-            get { return this.cbxIndicators.Visible; }
-            set { this.cbxIndicators.Visible = value; }
-        }
         private void ChartScaling()
         {
             if (dgvData.Rows.Count > 30)
@@ -544,9 +538,6 @@ namespace StockManager
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
                     .ToSortedCollection();
-                MessageBox.Show(Convert.ToString(IntervalWindowUltimate.Interval1));
-                MessageBox.Show(Convert.ToString(IntervalWindowUltimate.Interval2));
-                MessageBox.Show(Convert.ToString(IntervalWindowUltimate.Interval3));
                 IEnumerable<UltimateResult> results = quotes.GetUltimate(IntervalWindowUltimate.Interval1, IntervalWindowUltimate.Interval2, IntervalWindowUltimate.Interval3);
                 List<double> ultimatevalues = new List<double>();
                 List<string> dates = new List<string>();
