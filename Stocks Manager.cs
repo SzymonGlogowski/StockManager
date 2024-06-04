@@ -26,12 +26,19 @@ namespace StockManager
             InitializeComponent();
         }
 
-        public class RowData
-        {
-            public Dictionary<string, object> Cells { get; set; }
-        }
+
         private void ChartScaling()
         {
+            if (dgvData.Rows.Count > 30)
+            {
+                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 30;
+            }
+
+            if (dgvData.Rows.Count <= 30)
+            {
+                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = dgvData.Rows.Count;
+            }
+
             List<decimal> high = new List<decimal>();
             decimal max, min;
 
@@ -81,6 +88,18 @@ namespace StockManager
         }
         private void GenericChartScaling()
         {
+            if (dgvData.Rows.Count > 30)
+            {
+                chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+                chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
+                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
+            }
+
+            if (dgvData.Rows.Count <= 30)
+            {
+                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
+            }
+
             List<decimal> high = new List<decimal>();
             decimal max;
 
@@ -141,6 +160,18 @@ namespace StockManager
                 {
                     chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.ZoomReset();
                 }
+            }
+
+            if (dgvData.Rows.Count > 30)
+            {
+                chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+                chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
+                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
+            }
+
+            if (dgvData.Rows.Count <= 30)
+            {
+                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
             }
         }
         private void PrepareJson()
@@ -216,10 +247,6 @@ namespace StockManager
                 chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
-                //chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
-                //chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
-                //chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
-
                 chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
                 chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
@@ -246,10 +273,6 @@ namespace StockManager
             {
                 chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
-
-                //chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
-                //chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
-                //chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
 
                 chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
@@ -280,10 +303,6 @@ namespace StockManager
                 chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
                 chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
-
-                //chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
-                //chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
-                //chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
 
                 chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
@@ -343,6 +362,18 @@ namespace StockManager
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
+                if (dgvData.Rows.Count > 30)
+                {
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
+                }
+
+                if (dgvData.Rows.Count <= 30)
+                {
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
+                }
+
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
 
@@ -382,6 +413,18 @@ namespace StockManager
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+
+                if (dgvData.Rows.Count > 30)
+                {
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
+                }
+
+                if (dgvData.Rows.Count <= 30)
+                {
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
+                }
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
@@ -423,6 +466,18 @@ namespace StockManager
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
+                if (dgvData.Rows.Count > 30)
+                {
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
+                }
+
+                if (dgvData.Rows.Count <= 30)
+                {
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
+                }
+
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
 
@@ -463,6 +518,18 @@ namespace StockManager
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
+                if (dgvData.Rows.Count > 30)
+                {
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
+                }
+
+                if (dgvData.Rows.Count <= 30)
+                {
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
+                }
+
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
 
@@ -502,6 +569,18 @@ namespace StockManager
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+
+                if (dgvData.Rows.Count > 30)
+                {
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
+                }
+
+                if (dgvData.Rows.Count <= 30)
+                {
+                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
+                }
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
