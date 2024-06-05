@@ -17,7 +17,7 @@ namespace StockManager
         public int Index { get; set; }
         private void btnApply_Click(object sender, EventArgs e)
         {
-            if (Index == 0)
+            if (Index == 0 || Index == 4)
             {
                 if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) < 2)
                 {
@@ -30,7 +30,7 @@ namespace StockManager
                 }
             }
 
-            if (Index == 1)
+            if (Index == 1 || Index == 5 || Index == 6 || Index == 7 || Index == 8)
             {
                 if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) < 2)
                 {
@@ -57,41 +57,23 @@ namespace StockManager
                     Interval = Convert.ToInt32(txtInterval.Text);
                 }
             }
-
-            if (Index == 4)
-            {
-                if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) < 2)
-                {
-                    Interval = 14;
-                    MessageBox.Show("Generic value 14 were applied for Interval because input value is incorrect!", "Warning Interval");
-
-                }
-                else
-                {
-                    Interval = Convert.ToInt32(txtInterval.Text);
-                }
-            }
             this.Close();
         }
         public IndicatorIntervalConfig(int cbxIndicators)
         {
             InitializeComponent();
             Index = cbxIndicators;
-            if (Index == 0)
+            if (Index == 0 || Index == 4)
             {
                 txtInterval.Text = "14";
             }
-            if (Index == 1)
+            if (Index == 1 || Index == 5 || Index == 6 || Index == 7 || Index == 8)
             {
                 txtInterval.Text = "20";
             }
             if (Index == 2)
             {
                 txtInterval.Text = "10";
-            }
-            if (Index == 4)
-            {
-                txtInterval.Text = "14";
             }
         }
     }

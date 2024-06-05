@@ -27,15 +27,7 @@ namespace StockManager
         }
         private void ChartScaling()
         {
-            if (dgvData.Rows.Count > 30)
-            {
-                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 30;
-            }
-
-            if (dgvData.Rows.Count <= 30)
-            {
-                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = dgvData.Rows.Count;
-            }
+            AddScrollbarToChart();
 
             List<decimal> high = new List<decimal>();
             decimal max, min;
@@ -52,7 +44,6 @@ namespace StockManager
             { 
                 max = high.Max();
             }
-
             else
             {
                 max = 100;
@@ -72,7 +63,6 @@ namespace StockManager
             {
                 min = low.Min();
             }
-
             else
             {
                 min = 0;
@@ -86,17 +76,7 @@ namespace StockManager
         }
         private void GenericChartScaling()
         {
-            if (dgvData.Rows.Count > 30)
-            {
-                chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
-                chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
-                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
-            }
-
-            if (dgvData.Rows.Count <= 30)
-            {
-                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
-            }
+            AddScrollbarToChart();
 
             List<decimal> high = new List<decimal>();
             decimal max;
@@ -113,7 +93,6 @@ namespace StockManager
             {
                 max = high.Max();
             }
-
             else
             {
                 max = 100;
@@ -124,6 +103,35 @@ namespace StockManager
 
             chtChart.ChartAreas["ChartArea1"].AxisY.Interval = ((double)max) / 5.0;
             chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtChart.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
+        }
+        public void AddScrollbarToChart()
+        {
+            if (dgvData.Rows.Count > 30)
+            {
+                chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+                chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
+                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
+            }
+
+            if (dgvData.Rows.Count <= 30)
+            {
+                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
+            }
+        }
+
+        public void AddScrollbarToIndicators()
+        {
+            if (dgvData.Rows.Count > 30)
+            {
+                chtIndicators.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+                chtIndicators.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
+                chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
+            }
+
+            if (dgvData.Rows.Count <= 30)
+            {
+                chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
+            }
         }
         private void ScalingByMarkingArea()
         {
@@ -159,18 +167,7 @@ namespace StockManager
                     chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.ZoomReset();
                 }
             }
-
-            if (dgvData.Rows.Count > 30)
-            {
-                chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
-                chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
-                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
-            }
-
-            if (dgvData.Rows.Count <= 30)
-            {
-                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
-            }
+            AddScrollbarToChart();
         }
         private void PrepareJson()
         {
@@ -360,17 +357,7 @@ namespace StockManager
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
-                if (dgvData.Rows.Count > 30)
-                {
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
-                }
-
-                if (dgvData.Rows.Count <= 30)
-                {
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
-                }
+                AddScrollbarToIndicators();
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
@@ -412,17 +399,7 @@ namespace StockManager
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
-                if (dgvData.Rows.Count > 30)
-                {
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
-                }
-
-                if (dgvData.Rows.Count <= 30)
-                {
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
-                }
+                AddScrollbarToIndicators();
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
@@ -463,17 +440,7 @@ namespace StockManager
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
-                if (dgvData.Rows.Count > 30)
-                {
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
-                }
-
-                if (dgvData.Rows.Count <= 30)
-                {
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
-                }
+                AddScrollbarToIndicators();
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
@@ -515,17 +482,7 @@ namespace StockManager
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
-                if (dgvData.Rows.Count > 30)
-                {
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
-                }
-
-                if (dgvData.Rows.Count <= 30)
-                {
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
-                }
+                AddScrollbarToIndicators();
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
@@ -567,17 +524,7 @@ namespace StockManager
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
-                if (dgvData.Rows.Count > 30)
-                {
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
-                }
-
-                if (dgvData.Rows.Count <= 30)
-                {
-                    chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
-                }
+                AddScrollbarToIndicators();
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
@@ -605,6 +552,187 @@ namespace StockManager
 
                 mfi.Color = Color.DarkSeaGreen;
                 mfi.Points.DataBindXY(dates, mfivalues);
+            }
+            if (cbxIndicators.SelectedIndex == 5)
+            {
+                var IntervalWindow = new IndicatorIntervalConfig(cbxIndicators.SelectedIndex);
+                IntervalWindow.ShowDialog();
+                chtChart.Series["SMA"].ChartType = SeriesChartType.Line;
+
+                chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+
+                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+
+                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
+                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+
+                chtIndicators.Legends.Clear();
+
+                PrepareJson();
+                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                IEnumerable<Quote> quotes = JsonConvert
+                    .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
+                    .ToSortedCollection();
+                IEnumerable<SmaResult> results = quotes.GetSma(IntervalWindow.Interval);
+                List<double> smavalues = new List<double>();
+                List<DateTime> dates = new List<DateTime>();
+
+                foreach (SmaResult s in results)
+                {
+                    if (s.Sma == null)
+                    {
+                        s.Sma = double.NaN;
+                    }
+                    smavalues.Add((double)s.Sma);
+                }
+
+                foreach (DataGridViewRow row in dgvData.Rows)
+                {
+                    if (null != row && null != row.Cells[5].Value)
+                    {
+                        dates.Add(Convert.ToDateTime(row.Cells[5].Value.ToString()));
+                    }
+                }
+
+                chtChart.Series["SMA"].Color = Color.DodgerBlue;
+                chtChart.Series["SMA"].Points.DataBindXY(dates, smavalues);
+            }
+
+            if (cbxIndicators.SelectedIndex == 6)
+            {
+                var IntervalWindow = new IndicatorIntervalConfig(cbxIndicators.SelectedIndex);
+                IntervalWindow.ShowDialog();
+                chtChart.Series["EMA"].ChartType = SeriesChartType.Line;
+
+                chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+
+                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+
+                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
+                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+
+                chtIndicators.Legends.Clear();
+
+                PrepareJson();
+                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                IEnumerable<Quote> quotes = JsonConvert
+                    .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
+                    .ToSortedCollection();
+                IEnumerable<EmaResult> results = quotes.GetEma(IntervalWindow.Interval);
+                List<double> emavalues = new List<double>();
+                List<DateTime> dates = new List<DateTime>();
+
+                foreach (EmaResult s in results)
+                {
+                    if (s.Ema == null)
+                    {
+                        s.Ema = double.NaN;
+                    }
+                    emavalues.Add((double)s.Ema);
+                }
+
+                foreach (DataGridViewRow row in dgvData.Rows)
+                {
+                    if (null != row && null != row.Cells[5].Value)
+                    {
+                        dates.Add(Convert.ToDateTime(row.Cells[5].Value.ToString()));
+                    }
+                }
+
+                chtChart.Series["EMA"].Color = Color.DarkBlue;
+                chtChart.Series["EMA"].Points.DataBindXY(dates, emavalues);
+            }
+            if (cbxIndicators.SelectedIndex == 7)
+            {
+                var IntervalWindow = new IndicatorIntervalConfig(cbxIndicators.SelectedIndex);
+                IntervalWindow.ShowDialog();
+                chtChart.Series["WMA"].ChartType = SeriesChartType.Line;
+
+                chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+
+                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+
+                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
+                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+
+                chtIndicators.Legends.Clear();
+
+                PrepareJson();
+                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                IEnumerable<Quote> quotes = JsonConvert
+                    .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
+                    .ToSortedCollection();
+                IEnumerable<WmaResult> results = quotes.GetWma(IntervalWindow.Interval);
+                List<double> wmavalues = new List<double>();
+                List<DateTime> dates = new List<DateTime>();
+
+                foreach (WmaResult w in results)
+                {
+                    if (w.Wma == null)
+                    {
+                        w.Wma = double.NaN;
+                    }
+                    wmavalues.Add((double)w.Wma);
+                }
+
+                foreach (DataGridViewRow row in dgvData.Rows)
+                {
+                    if (null != row && null != row.Cells[5].Value)
+                    {
+                        dates.Add(Convert.ToDateTime(row.Cells[5].Value.ToString()));
+                    }
+                }
+
+                chtChart.Series["WMA"].Color = Color.DarkViolet;
+                chtChart.Series["WMA"].Points.DataBindXY(dates, wmavalues);
+            }
+            if (cbxIndicators.SelectedIndex == 8)
+            {
+                var IntervalWindow = new IndicatorIntervalConfig(cbxIndicators.SelectedIndex);
+                IntervalWindow.ShowDialog();
+                chtChart.Series["TEMA"].ChartType = SeriesChartType.Line;
+
+                chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+
+                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+
+                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
+                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+
+                chtIndicators.Legends.Clear();
+
+                PrepareJson();
+                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                IEnumerable<Quote> quotes = JsonConvert
+                    .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
+                    .ToSortedCollection();
+                IEnumerable<TemaResult> results = quotes.GetTema(IntervalWindow.Interval);
+                List<double> temavalues = new List<double>();
+                List<DateTime> dates = new List<DateTime>();
+
+                foreach (TemaResult t in results)
+                {
+                    if (t.Tema == null)
+                    {
+                        t.Tema = double.NaN;
+                    }
+                    temavalues.Add((double)t.Tema);
+                }
+
+                foreach (DataGridViewRow row in dgvData.Rows)
+                {
+                    if (null != row && null != row.Cells[5].Value)
+                    {
+                        dates.Add(Convert.ToDateTime(row.Cells[5].Value.ToString()));
+                    }
+                }
+
+                chtChart.Series["TEMA"].Color = Color.DarkGreen;
+                chtChart.Series["TEMA"].Points.DataBindXY(dates, temavalues);
             }
         }
         private void chxEnableAutoscalling_CheckedChanged(object sender, EventArgs e)
@@ -649,7 +777,7 @@ namespace StockManager
 
             if (saveFileDialog1.FileName != "")
             {
-                System.IO.FileStream fs = (System.IO.FileStream)saveFileDialog1.OpenFile();
+                FileStream fs = (FileStream)saveFileDialog1.OpenFile();
                 switch (saveFileDialog1.FilterIndex)
                 {
                     case 1:
