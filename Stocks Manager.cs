@@ -427,7 +427,6 @@ namespace StockManager
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
                 chtIndicators.Legends.Clear();
-                //chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Position = chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Position;
 
                 PrepareJson();
                 var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
@@ -677,6 +676,31 @@ namespace StockManager
             DateTime enddate = DateTime.Today;
             DateTime startdate = DateTime.Today.AddDays(-days);
             var awaiter = getStockData(symbol, startdate, enddate);
+        }
+
+        private void chtChart_AxisScrollBarClicked(object sender, ScrollBarEventArgs e)
+        {
+            chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Position = chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Position;
+        }
+        private void chtChart_AxisViewChanging(object sender, ViewEventArgs e)
+        {
+            chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Position = chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Position;
+        }
+        private void chtChart_AxisViewChanged(object sender, ViewEventArgs e)
+        {
+            chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Position = chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Position;
+        }
+        private void chtIndicators_AxisScrollBarClicked(object sender, ScrollBarEventArgs e)
+        {
+            chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Position = chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Position;
+        }
+        private void chtIndicators_AxisViewChanging(object sender, ViewEventArgs e)
+        {
+            chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Position = chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Position;
+        }
+        private void chtIndicators_AxisViewChanged(object sender, ViewEventArgs e)
+        {
+            chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Position = chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Position;
         }
     }
 }
