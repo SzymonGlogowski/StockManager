@@ -19,9 +19,10 @@ namespace StockManager
         {
             if (Index == 0)
             {
-                if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) == 0)
+                if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) < 2)
                 {
                     Interval = 14;
+                    MessageBox.Show("Generic value 14 were applied for Interval because input value is incorrect!", "Warning Interval");
                 }
                 else
                 {
@@ -31,9 +32,11 @@ namespace StockManager
 
             if (Index == 1)
             {
-                if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) == 0)
+                if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) < 2)
                 {
                     Interval = 20;
+                    MessageBox.Show("Generic value 20 were applied for Interval because input value is incorrect!", "Warning Interval");
+
                 }
                 else
                 {
@@ -43,9 +46,11 @@ namespace StockManager
 
             if (Index == 2)
             {
-                if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) == 0)
+                if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) < 2)
                 {
                     Interval = 10;
+                    MessageBox.Show("Generic value 10 were applied for Interval because input value is incorrect!", "Warning Interval");
+
                 }
                 else
                 {
@@ -55,9 +60,11 @@ namespace StockManager
 
             if (Index == 4)
             {
-                if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) == 0)
+                if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) < 2)
                 {
                     Interval = 14;
+                    MessageBox.Show("Generic value 14 were applied for Interval because input value is incorrect!", "Warning Interval");
+
                 }
                 else
                 {
@@ -70,6 +77,22 @@ namespace StockManager
         {
             InitializeComponent();
             Index = cbxIndicators;
+            if (Index == 0)
+            {
+                txtInterval.Text = "14";
+            }
+            if (Index == 1)
+            {
+                txtInterval.Text = "20";
+            }
+            if (Index == 2)
+            {
+                txtInterval.Text = "10";
+            }
+            if (Index == 4)
+            {
+                txtInterval.Text = "14";
+            }
         }
     }
 }

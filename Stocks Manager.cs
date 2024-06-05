@@ -426,8 +426,8 @@ namespace StockManager
 
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
-
                 chtIndicators.Legends.Clear();
+                //chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Position = chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Position;
 
                 PrepareJson();
                 var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");

@@ -63,6 +63,8 @@
             this.btnFetchData = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.stocksTableAdapter = new StockManager.StocksDatabaseDataSetTableAdapters.StocksTableAdapter();
+            this.lblSymbol = new System.Windows.Forms.Label();
+            this.lblIntervals = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stocksBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stocksDatabaseDataSet)).BeginInit();
@@ -233,7 +235,7 @@
             // chxEnableAutoscalling
             // 
             this.chxEnableAutoscalling.AutoSize = true;
-            this.chxEnableAutoscalling.Location = new System.Drawing.Point(3, 61);
+            this.chxEnableAutoscalling.Location = new System.Drawing.Point(12, 113);
             this.chxEnableAutoscalling.Name = "chxEnableAutoscalling";
             this.chxEnableAutoscalling.Size = new System.Drawing.Size(119, 17);
             this.chxEnableAutoscalling.TabIndex = 7;
@@ -244,7 +246,7 @@
             // chxEnableScallingByMarkingArea
             // 
             this.chxEnableScallingByMarkingArea.AutoSize = true;
-            this.chxEnableScallingByMarkingArea.Location = new System.Drawing.Point(3, 84);
+            this.chxEnableScallingByMarkingArea.Location = new System.Drawing.Point(12, 136);
             this.chxEnableScallingByMarkingArea.Name = "chxEnableScallingByMarkingArea";
             this.chxEnableScallingByMarkingArea.Size = new System.Drawing.Size(180, 17);
             this.chxEnableScallingByMarkingArea.TabIndex = 8;
@@ -254,7 +256,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(3, 107);
+            this.btnExport.Location = new System.Drawing.Point(205, 30);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(95, 25);
             this.btnExport.TabIndex = 9;
@@ -346,6 +348,8 @@
             // 
             // splitContainer3.Panel2
             // 
+            this.splitContainer3.Panel2.Controls.Add(this.lblIntervals);
+            this.splitContainer3.Panel2.Controls.Add(this.lblSymbol);
             this.splitContainer3.Panel2.Controls.Add(this.txtMonths);
             this.splitContainer3.Panel2.Controls.Add(this.txtSymbol);
             this.splitContainer3.Panel2.Controls.Add(this.btnFetchData);
@@ -363,23 +367,23 @@
             // 
             // txtMonths
             // 
-            this.txtMonths.Location = new System.Drawing.Point(104, 139);
+            this.txtMonths.Location = new System.Drawing.Point(65, 87);
             this.txtMonths.Name = "txtMonths";
-            this.txtMonths.Size = new System.Drawing.Size(100, 20);
+            this.txtMonths.Size = new System.Drawing.Size(134, 20);
             this.txtMonths.TabIndex = 13;
             this.txtMonths.Text = "30";
             // 
             // txtSymbol
             // 
-            this.txtSymbol.Location = new System.Drawing.Point(104, 110);
+            this.txtSymbol.Location = new System.Drawing.Point(65, 61);
             this.txtSymbol.Name = "txtSymbol";
-            this.txtSymbol.Size = new System.Drawing.Size(100, 20);
+            this.txtSymbol.Size = new System.Drawing.Size(134, 20);
             this.txtSymbol.TabIndex = 12;
             this.txtSymbol.Text = "AAPL";
             // 
             // btnFetchData
             // 
-            this.btnFetchData.Location = new System.Drawing.Point(3, 136);
+            this.btnFetchData.Location = new System.Drawing.Point(205, 84);
             this.btnFetchData.Name = "btnFetchData";
             this.btnFetchData.Size = new System.Drawing.Size(95, 25);
             this.btnFetchData.TabIndex = 11;
@@ -398,6 +402,24 @@
             // stocksTableAdapter
             // 
             this.stocksTableAdapter.ClearBeforeFill = true;
+            // 
+            // lblSymbol
+            // 
+            this.lblSymbol.AutoSize = true;
+            this.lblSymbol.Location = new System.Drawing.Point(9, 64);
+            this.lblSymbol.Name = "lblSymbol";
+            this.lblSymbol.Size = new System.Drawing.Size(44, 13);
+            this.lblSymbol.TabIndex = 14;
+            this.lblSymbol.Text = "Symbol:";
+            // 
+            // lblIntervals
+            // 
+            this.lblIntervals.AutoSize = true;
+            this.lblIntervals.Location = new System.Drawing.Point(9, 90);
+            this.lblIntervals.Name = "lblIntervals";
+            this.lblIntervals.Size = new System.Drawing.Size(50, 13);
+            this.lblIntervals.TabIndex = 15;
+            this.lblIntervals.Text = "Intervals:";
             // 
             // Form1
             // 
@@ -460,6 +482,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn volumeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataVisualization.Charting.Chart chtChart;
         private System.Windows.Forms.ComboBox cbxIndicators;
+        private System.Windows.Forms.Label lblIntervals;
+        private System.Windows.Forms.Label lblSymbol;
     }
 }
 
