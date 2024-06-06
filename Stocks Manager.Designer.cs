@@ -62,6 +62,7 @@
             this.chtChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.chxMovingAverages = new System.Windows.Forms.CheckBox();
             this.lblIntervals = new System.Windows.Forms.Label();
             this.lblSymbol = new System.Windows.Forms.Label();
             this.txtMonths = new System.Windows.Forms.TextBox();
@@ -390,6 +391,7 @@
             // 
             // splitContainer3.Panel2
             // 
+            this.splitContainer3.Panel2.Controls.Add(this.chxMovingAverages);
             this.splitContainer3.Panel2.Controls.Add(this.lblIntervals);
             this.splitContainer3.Panel2.Controls.Add(this.lblSymbol);
             this.splitContainer3.Panel2.Controls.Add(this.txtMonths);
@@ -406,6 +408,17 @@
             this.splitContainer3.Size = new System.Drawing.Size(959, 161);
             this.splitContainer3.SplitterDistance = 650;
             this.splitContainer3.TabIndex = 0;
+            // 
+            // chxMovingAverages
+            // 
+            this.chxMovingAverages.AutoSize = true;
+            this.chxMovingAverages.Location = new System.Drawing.Point(133, 113);
+            this.chxMovingAverages.Name = "chxMovingAverages";
+            this.chxMovingAverages.Size = new System.Drawing.Size(167, 17);
+            this.chxMovingAverages.TabIndex = 16;
+            this.chxMovingAverages.Text = "Show Only 1 Moving Average";
+            this.chxMovingAverages.UseVisualStyleBackColor = true;
+            this.chxMovingAverages.CheckedChanged += new System.EventHandler(this.chxMovingAverages_CheckedChanged);
             // 
             // lblIntervals
             // 
@@ -526,6 +539,7 @@
         private System.Windows.Forms.ComboBox cbxIndicators;
         private System.Windows.Forms.Label lblIntervals;
         private System.Windows.Forms.Label lblSymbol;
+        private System.Windows.Forms.CheckBox chxMovingAverages;
     }
 }
 

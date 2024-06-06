@@ -16,6 +16,7 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Xml.Linq;
+using System.Drawing.Text;
 
 namespace StockManager
 {
@@ -104,7 +105,7 @@ namespace StockManager
             chtChart.ChartAreas["ChartArea1"].AxisY.Interval = ((double)max) / 5.0;
             chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtChart.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
         }
-        public void AddScrollbarToChart()
+        private void AddScrollbarToChart()
         {
             if (dgvData.Rows.Count > 30)
             {
@@ -119,7 +120,7 @@ namespace StockManager
             }
         }
 
-        public void AddScrollbarToIndicators()
+        private void AddScrollbarToIndicators()
         {
             if (dgvData.Rows.Count > 30)
             {
@@ -132,6 +133,32 @@ namespace StockManager
             {
                 chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
             }
+        }
+        private void HideOtherMovingAverages()
+        {
+            for (int i = 2; i < chtChart.Series.Count; i += 1)
+            {
+                if (i != cbxIndicators.SelectedIndex - 3)
+                {
+                    chtChart.Series[i].Enabled = false;
+                }
+                else if(i == cbxIndicators.SelectedIndex - 3)
+                {
+                    chtChart.Series[i].Enabled = true;
+                }
+            }
+        }
+        private void ShowOtherMovingAverages()
+        {
+            for (int i = 2; i < chtChart.Series.Count; i += 1)
+            {
+                chtChart.Series[i].Enabled = true;
+            }
+        }
+        private void RefreshMovingAverages()
+        {
+            chxMovingAverages.Checked = false;
+            chxMovingAverages.Checked = true;
         }
         private void ScalingByMarkingArea()
         {
@@ -597,6 +624,7 @@ namespace StockManager
 
                 chtChart.Series["SMA"].Color = Color.DodgerBlue;
                 chtChart.Series["SMA"].Points.DataBindXY(dates, smavalues);
+                RefreshMovingAverages();
             }
 
             if (cbxIndicators.SelectedIndex == 6)
@@ -643,6 +671,7 @@ namespace StockManager
 
                 chtChart.Series["EMA"].Color = Color.DarkBlue;
                 chtChart.Series["EMA"].Points.DataBindXY(dates, emavalues);
+                RefreshMovingAverages();
             }
             if (cbxIndicators.SelectedIndex == 7)
             {
@@ -688,6 +717,7 @@ namespace StockManager
 
                 chtChart.Series["WMA"].Color = Color.DarkViolet;
                 chtChart.Series["WMA"].Points.DataBindXY(dates, wmavalues);
+                RefreshMovingAverages();
             }
             if (cbxIndicators.SelectedIndex == 8)
             {
@@ -733,6 +763,7 @@ namespace StockManager
 
                 chtChart.Series["TEMA"].Color = Color.DarkGreen;
                 chtChart.Series["TEMA"].Points.DataBindXY(dates, temavalues);
+                RefreshMovingAverages();
             }
         }
         private void chxEnableAutoscalling_CheckedChanged(object sender, EventArgs e)
@@ -829,6 +860,18 @@ namespace StockManager
         private void chtIndicators_AxisViewChanged(object sender, ViewEventArgs e)
         {
             chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Position = chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Position;
+        }
+        private void chxMovingAverages_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chxMovingAverages.Checked)
+            {
+                HideOtherMovingAverages();
+            }
+
+            if (!chxMovingAverages.Checked)
+            {
+                ShowOtherMovingAverages();
+            }
         }
     }
 }
