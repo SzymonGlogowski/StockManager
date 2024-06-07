@@ -69,11 +69,11 @@ namespace StockManager
                 min = 0;
             }
 
-            chtChart.ChartAreas["ChartArea1"].AxisY.Maximum = (double)max;
-            chtChart.ChartAreas["ChartArea1"].AxisY.Minimum = (double)min;
+            chtChart.ChartAreas["StockChartArea"].AxisY.Maximum = (double)max;
+            chtChart.ChartAreas["StockChartArea"].AxisY.Minimum = (double)min;
 
-            chtChart.ChartAreas["ChartArea1"].AxisY.Interval = ((double)max - (double)min) / 5.0;
-            chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtChart.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
+            chtChart.ChartAreas["StockChartArea"].AxisY.Interval = ((double)max - (double)min) / 5.0;
+            chtChart.ChartAreas["StockChartArea"].AxisY.MinorGrid.Interval = chtChart.ChartAreas["StockChartArea"].AxisY.Interval / 2.0;
         }
         private void GenericChartScaling()
         {
@@ -99,24 +99,24 @@ namespace StockManager
                 max = 100;
             }
 
-            chtChart.ChartAreas["ChartArea1"].AxisY.Maximum = (double)max;
-            chtChart.ChartAreas["ChartArea1"].AxisY.Minimum = 0;
+            chtChart.ChartAreas["StockChartArea"].AxisY.Maximum = (double)max;
+            chtChart.ChartAreas["StockChartArea"].AxisY.Minimum = 0;
 
-            chtChart.ChartAreas["ChartArea1"].AxisY.Interval = ((double)max) / 5.0;
-            chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chtChart.ChartAreas["ChartArea1"].AxisY.Interval / 2.0;
+            chtChart.ChartAreas["StockChartArea"].AxisY.Interval = ((double)max) / 5.0;
+            chtChart.ChartAreas["StockChartArea"].AxisY.MinorGrid.Interval = chtChart.ChartAreas["StockChartArea"].AxisY.Interval / 2.0;
         }
         private void AddScrollbarToChart()
         {
             if (dgvData.Rows.Count > 30)
             {
-                chtChart.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
-                chtChart.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
-                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
+                chtChart.ChartAreas["StockChartArea"].AxisX.ScrollBar.Enabled = true;
+                chtChart.ChartAreas["StockChartArea"].AxisX.IsLabelAutoFit = true;
+                chtChart.ChartAreas["StockChartArea"].AxisX.ScaleView.Size = 30;
             }
 
             if (dgvData.Rows.Count <= 30)
             {
-                chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
+                chtChart.ChartAreas["StockChartArea"].AxisX.ScaleView.Size = dgvData.Rows.Count;
             }
         }
 
@@ -124,14 +124,14 @@ namespace StockManager
         {
             if (dgvData.Rows.Count > 30)
             {
-                chtIndicators.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
-                chtIndicators.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
-                chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 30;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisX.ScrollBar.Enabled = true;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisX.IsLabelAutoFit = true;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisX.ScaleView.Size = 30;
             }
 
             if (dgvData.Rows.Count <= 30)
             {
-                chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = dgvData.Rows.Count;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisX.ScaleView.Size = dgvData.Rows.Count;
             }
         }
         private void HideOtherMovingAverages()
@@ -157,41 +157,44 @@ namespace StockManager
         }
         private void RefreshMovingAverages()
         {
-            chxMovingAverages.Checked = false;
-            chxMovingAverages.Checked = true;
+            if (chxMovingAverages.Checked)
+            {
+                chxMovingAverages.Checked = false;
+                chxMovingAverages.Checked = true;
+            }
         }
         private void ScalingByMarkingArea()
         {
-            chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Zoomable = true;
-            chtChart.ChartAreas["ChartArea1"].CursorX.AutoScroll = true;
-            chtChart.ChartAreas["ChartArea1"].CursorX.IsUserSelectionEnabled = true;
+            chtChart.ChartAreas["StockChartArea"].AxisX.ScaleView.Zoomable = true;
+            chtChart.ChartAreas["StockChartArea"].CursorX.AutoScroll = true;
+            chtChart.ChartAreas["StockChartArea"].CursorX.IsUserSelectionEnabled = true;
 
-            chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.Zoomable = true;
-            chtChart.ChartAreas["ChartArea1"].CursorY.AutoScroll = true;
-            chtChart.ChartAreas["ChartArea1"].CursorY.IsUserSelectionEnabled = true;
+            chtChart.ChartAreas["StockChartArea"].AxisY.ScaleView.Zoomable = true;
+            chtChart.ChartAreas["StockChartArea"].CursorY.AutoScroll = true;
+            chtChart.ChartAreas["StockChartArea"].CursorY.IsUserSelectionEnabled = true;
         }
         private void DisableScallingByMarkingArea()
         {
-            chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Zoomable = false;
-            chtChart.ChartAreas["ChartArea1"].CursorX.AutoScroll = false;
-            chtChart.ChartAreas["ChartArea1"].CursorX.IsUserSelectionEnabled = false;
+            chtChart.ChartAreas["StockChartArea"].AxisX.ScaleView.Zoomable = false;
+            chtChart.ChartAreas["StockChartArea"].CursorX.AutoScroll = false;
+            chtChart.ChartAreas["StockChartArea"].CursorX.IsUserSelectionEnabled = false;
 
-            chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.Zoomable = false;
-            chtChart.ChartAreas["ChartArea1"].CursorY.AutoScroll = false;
-            chtChart.ChartAreas["ChartArea1"].CursorY.IsUserSelectionEnabled = false;
+            chtChart.ChartAreas["StockChartArea"].AxisY.ScaleView.Zoomable = false;
+            chtChart.ChartAreas["StockChartArea"].CursorY.AutoScroll = false;
+            chtChart.ChartAreas["StockChartArea"].CursorY.IsUserSelectionEnabled = false;
         }
         private void FullZoomReset()
         {
-            while (chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.IsZoomed || chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.IsZoomed)
+            while (chtChart.ChartAreas["StockChartArea"].AxisX.ScaleView.IsZoomed || chtChart.ChartAreas["StockChartArea"].AxisY.ScaleView.IsZoomed)
             {
-                if (chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.IsZoomed)
+                if (chtChart.ChartAreas["StockChartArea"].AxisX.ScaleView.IsZoomed)
                 {
-                    chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.ZoomReset();
+                    chtChart.ChartAreas["StockChartArea"].AxisX.ScaleView.ZoomReset();
                 }
 
-                if (chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.IsZoomed)
+                if (chtChart.ChartAreas["StockChartArea"].AxisY.ScaleView.IsZoomed)
                 {
-                    chtChart.ChartAreas["ChartArea1"].AxisY.ScaleView.ZoomReset();
+                    chtChart.ChartAreas["StockChartArea"].AxisY.ScaleView.ZoomReset();
                 }
             }
             AddScrollbarToChart();
@@ -266,13 +269,13 @@ namespace StockManager
         {
             if (cbxChartType.SelectedIndex == 0)
             {
-                chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
-                chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["StockChartArea"].AxisX.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MajorGrid.LineWidth = 0;
 
-                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+                chtChart.ChartAreas["StockChartArea"].AxisX.Interval = 1;
 
-                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
-                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MinorGrid.Enabled = true;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MinorGrid.LineColor = Color.LightGray;
 
                 chtChart.Series["Stock Value"].YAxisType = AxisType.Primary;
                 chtChart.Series["Stock Value"].XValueMember = "Date";
@@ -291,13 +294,13 @@ namespace StockManager
             }
             if (cbxChartType.SelectedIndex == 1)
             {
-                chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
-                chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["StockChartArea"].AxisX.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MajorGrid.LineWidth = 0;
 
-                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+                chtChart.ChartAreas["StockChartArea"].AxisX.Interval = 1;
 
-                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
-                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MinorGrid.Enabled = true;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MinorGrid.LineColor = Color.LightGray;
 
                 chtChart.Series["Stock Value"].YAxisType = AxisType.Primary;
                 chtChart.Series["Stock Value"].XValueMember = "Date";
@@ -317,13 +320,13 @@ namespace StockManager
             }
             if (cbxChartType.SelectedIndex == 2)
             {
-                chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
-                chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["StockChartArea"].AxisX.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MajorGrid.LineWidth = 0;
 
-                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+                chtChart.ChartAreas["StockChartArea"].AxisX.Interval = 1;
 
-                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
-                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MinorGrid.Enabled = true;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MinorGrid.LineColor = Color.LightGray;
 
                 chtChart.Series["Stock Value"].YAxisType = AxisType.Primary;
                 chtChart.Series["Stock Value"].XValueMember = "Date";
@@ -371,15 +374,15 @@ namespace StockManager
                 Series RSI = chtIndicators.Series.Add("RSI");
                 chtIndicators.Series["RSI"].ChartType = SeriesChartType.Line;
 
-                chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisX.MajorGrid.LineWidth = 0;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisY.MajorGrid.LineWidth = 0;
 
-                chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisX.Interval = 1;
 
                 AddScrollbarToIndicators();
 
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisY.MinorGrid.Enabled = true;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisY.MinorGrid.LineColor = Color.LightGray;
 
                 chtIndicators.Legends.Clear();
 
@@ -413,15 +416,15 @@ namespace StockManager
                 Series CCI = chtIndicators.Series.Add("CCI");
                 chtIndicators.Series["CCI"].ChartType = SeriesChartType.Line;
 
-                chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisX.MajorGrid.LineWidth = 0;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisY.MajorGrid.LineWidth = 0;
 
-                chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisX.Interval = 1;
 
                 AddScrollbarToIndicators();
 
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisY.MinorGrid.Enabled = true;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisY.MinorGrid.LineColor = Color.LightGray;
                 chtIndicators.Legends.Clear();
 
                 PrepareJson();
@@ -454,15 +457,15 @@ namespace StockManager
                 Series WilliamsR = chtIndicators.Series.Add("WillamsR");
                 chtIndicators.Series["WillamsR"].ChartType = SeriesChartType.Line;
 
-                chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisX.MajorGrid.LineWidth = 0;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisY.MajorGrid.LineWidth = 0;
 
-                chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisX.Interval = 1;
 
                 AddScrollbarToIndicators();
 
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisY.MinorGrid.Enabled = true;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisY.MinorGrid.LineColor = Color.LightGray;
 
                 chtIndicators.Legends.Clear();
 
@@ -496,15 +499,15 @@ namespace StockManager
                 Series Ultimate = chtIndicators.Series.Add("Ultimate");
                 chtIndicators.Series["Ultimate"].ChartType = SeriesChartType.Line;
 
-                chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisX.MajorGrid.LineWidth = 0;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisY.MajorGrid.LineWidth = 0;
 
-                chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisX.Interval = 1;
 
                 AddScrollbarToIndicators();
 
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisY.MinorGrid.Enabled = true;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisY.MinorGrid.LineColor = Color.LightGray;
 
                 chtIndicators.Legends.Clear();
 
@@ -538,15 +541,15 @@ namespace StockManager
                 Series mfi = chtIndicators.Series.Add("MFI");
                 chtIndicators.Series["MFI"].ChartType = SeriesChartType.Line;
 
-                chtIndicators.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisX.MajorGrid.LineWidth = 0;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisY.MajorGrid.LineWidth = 0;
 
-                chtIndicators.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisX.Interval = 1;
 
                 AddScrollbarToIndicators();
 
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
-                chtIndicators.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisY.MinorGrid.Enabled = true;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisY.MinorGrid.LineColor = Color.LightGray;
 
                 chtIndicators.Legends.Clear();
 
@@ -578,13 +581,13 @@ namespace StockManager
                 IntervalWindow.ShowDialog();
                 chtChart.Series["SMA"].ChartType = SeriesChartType.Line;
 
-                chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
-                chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["StockChartArea"].AxisX.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MajorGrid.LineWidth = 0;
 
-                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+                chtChart.ChartAreas["StockChartArea"].AxisX.Interval = 1;
 
-                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
-                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MinorGrid.Enabled = true;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MinorGrid.LineColor = Color.LightGray;
 
                 chtIndicators.Legends.Clear();
 
@@ -625,13 +628,13 @@ namespace StockManager
                 IntervalWindow.ShowDialog();
                 chtChart.Series["EMA"].ChartType = SeriesChartType.Line;
 
-                chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
-                chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["StockChartArea"].AxisX.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MajorGrid.LineWidth = 0;
 
-                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+                chtChart.ChartAreas["StockChartArea"].AxisX.Interval = 1;
 
-                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
-                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MinorGrid.Enabled = true;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MinorGrid.LineColor = Color.LightGray;
 
                 chtIndicators.Legends.Clear();
 
@@ -671,13 +674,13 @@ namespace StockManager
                 IntervalWindow.ShowDialog();
                 chtChart.Series["WMA"].ChartType = SeriesChartType.Line;
 
-                chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
-                chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["StockChartArea"].AxisX.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MajorGrid.LineWidth = 0;
 
-                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+                chtChart.ChartAreas["StockChartArea"].AxisX.Interval = 1;
 
-                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
-                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MinorGrid.Enabled = true;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MinorGrid.LineColor = Color.LightGray;
 
                 chtIndicators.Legends.Clear();
 
@@ -717,13 +720,13 @@ namespace StockManager
                 IntervalWindow.ShowDialog();
                 chtChart.Series["TEMA"].ChartType = SeriesChartType.Line;
 
-                chtChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
-                chtChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["StockChartArea"].AxisX.MajorGrid.LineWidth = 0;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MajorGrid.LineWidth = 0;
 
-                chtChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+                chtChart.ChartAreas["StockChartArea"].AxisX.Interval = 1;
 
-                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
-                chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MinorGrid.Enabled = true;
+                chtChart.ChartAreas["StockChartArea"].AxisY.MinorGrid.LineColor = Color.LightGray;
 
                 chtIndicators.Legends.Clear();
 
@@ -830,27 +833,27 @@ namespace StockManager
         }
         private void chtChart_AxisScrollBarClicked(object sender, ScrollBarEventArgs e)
         {
-            chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Position = chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Position;
+            chtIndicators.ChartAreas["IndicatorsArea"].AxisX.ScaleView.Position = chtChart.ChartAreas["StockChartArea"].AxisX.ScaleView.Position;
         }
         private void chtChart_AxisViewChanging(object sender, ViewEventArgs e)
         {
-            chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Position = chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Position;
+            chtIndicators.ChartAreas["IndicatorsArea"].AxisX.ScaleView.Position = chtChart.ChartAreas["StockChartArea"].AxisX.ScaleView.Position;
         }
         private void chtChart_AxisViewChanged(object sender, ViewEventArgs e)
         {
-            chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Position = chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Position;
+            chtIndicators.ChartAreas["IndicatorsArea"].AxisX.ScaleView.Position = chtChart.ChartAreas["StockChartArea"].AxisX.ScaleView.Position;
         }
         private void chtIndicators_AxisScrollBarClicked(object sender, ScrollBarEventArgs e)
         {
-            chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Position = chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Position;
+            chtChart.ChartAreas["StockChartArea"].AxisX.ScaleView.Position = chtIndicators.ChartAreas["IndicatorsArea"].AxisX.ScaleView.Position;
         }
         private void chtIndicators_AxisViewChanging(object sender, ViewEventArgs e)
         {
-            chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Position = chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Position;
+            chtChart.ChartAreas["StockChartArea"].AxisX.ScaleView.Position = chtIndicators.ChartAreas["IndicatorsArea"].AxisX.ScaleView.Position;
         }
         private void chtIndicators_AxisViewChanged(object sender, ViewEventArgs e)
         {
-            chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Position = chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Position;
+            chtChart.ChartAreas["StockChartArea"].AxisX.ScaleView.Position = chtIndicators.ChartAreas["IndicatorsArea"].AxisX.ScaleView.Position;
         }
         private void chxMovingAverages_CheckedChanged(object sender, EventArgs e)
         {

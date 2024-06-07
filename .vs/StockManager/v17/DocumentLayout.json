@@ -34,20 +34,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Stocks Manager.cs [Projekt]",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\Stocks Manager.cs",
-              "RelativeDocumentMoniker": "Stocks Manager.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\Stocks Manager.cs [Projekt]",
-              "RelativeToolTip": "Stocks Manager.cs [Projekt]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-28T20:40:48.099Z",
-              "EditorCaption": " [Projekt]"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -56,7 +44,7 @@
               "RelativeDocumentMoniker": "Stocks Manager.cs",
               "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\Stocks Manager.cs",
               "RelativeToolTip": "Stocks Manager.cs",
-              "ViewState": "AQIAAOwBAAAAAAAAAAAAAAUCAAA4AAAA",
+              "ViewState": "AQIAAEMDAAAAAAAAAAAAAFcDAAB1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-28T20:47:58.115Z",
               "EditorCaption": ""
@@ -97,6 +85,18 @@
               "RelativeToolTip": "IndicatorIntervalConfigUltimate.cs [Projekt]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-03T17:29:53.602Z",
+              "EditorCaption": " [Projekt]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Stocks Manager.cs [Projekt]",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\Stocks Manager.cs",
+              "RelativeDocumentMoniker": "Stocks Manager.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\Stocks Manager.cs [Projekt]",
+              "RelativeToolTip": "Stocks Manager.cs [Projekt]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-28T20:40:48.099Z",
               "EditorCaption": " [Projekt]"
             },
             {
