@@ -274,8 +274,6 @@ namespace StockManager
                 chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
 
-                chtChart.Legends.Clear();
-
                 chtChart.Series["Stock Value"].YAxisType = AxisType.Primary;
                 chtChart.Series["Stock Value"].XValueMember = "Date";
                 chtChart.Series["Stock Value"].YValueMembers = "Close";
@@ -301,8 +299,6 @@ namespace StockManager
                 chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
 
-                chtChart.Legends.Clear();
-
                 chtChart.Series["Stock Value"].YAxisType = AxisType.Primary;
                 chtChart.Series["Stock Value"].XValueMember = "Date";
                 chtChart.Series["Stock Value"].YValueMembers = "High,Low,Open,Close";
@@ -329,8 +325,6 @@ namespace StockManager
                 chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = true;
                 chtChart.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = Color.LightGray;
 
-                chtChart.Legends.Clear();
-
                 chtChart.Series["Stock Value"].YAxisType = AxisType.Primary;
                 chtChart.Series["Stock Value"].XValueMember = "Date";
                 chtChart.Series["Stock Value"].YValueMembers = "High,Low,Open,Close";
@@ -349,7 +343,6 @@ namespace StockManager
                 chtChart.DataBind();
             }
         }
-
         private void cbxChartType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbxChartType.SelectedIndex == 0)
@@ -368,7 +361,6 @@ namespace StockManager
                 btnLoad.PerformClick();
             }
         }
-
         private void cbxIndicators_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cbxIndicators.SelectedIndex == 0)
@@ -836,7 +828,6 @@ namespace StockManager
             DateTime startdate = DateTime.Today.AddDays(-days);
             var awaiter = getStockData(symbol, startdate, enddate);
         }
-
         private void chtChart_AxisScrollBarClicked(object sender, ScrollBarEventArgs e)
         {
             chtIndicators.ChartAreas["ChartArea1"].AxisX.ScaleView.Position = chtChart.ChartAreas["ChartArea1"].AxisX.ScaleView.Position;
