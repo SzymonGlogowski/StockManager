@@ -7,20 +7,24 @@
       "RelativeMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|solutionrelative:stocks manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\stocks manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|solutionrelative:stocks manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|c:\\users\\admin\\documents\\github\\stockmanager\\indicatorintervalconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|solutionrelative:indicatorintervalconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\indicatorintervalconfigultimate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|solutionrelative:indicatorintervalconfigultimate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\indicatorintervalconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|solutionrelative:indicatorintervalconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\indicatorintervalconfigultimate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|solutionrelative:indicatorintervalconfigultimate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\stocks manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|solutionrelative:stocks manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\indicatorintervalconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|solutionrelative:indicatorintervalconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{781AE0DB-98FC-4270-904A-36CCDEAAFA68}|StockManager.csproj|C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\stocksdatabasedataset.xsd||{07AC752B-D2B0-4DCD-AD9C-237BF561A30A}",
@@ -34,8 +38,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IndicatorIntervalConfig.cs [Projekt]",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\IndicatorIntervalConfig.cs",
+              "RelativeDocumentMoniker": "IndicatorIntervalConfig.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\IndicatorIntervalConfig.cs [Projekt]",
+              "RelativeToolTip": "IndicatorIntervalConfig.cs [Projekt]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-07T20:32:36.104Z",
+              "EditorCaption": " [Projekt]"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -44,7 +60,7 @@
               "RelativeDocumentMoniker": "Stocks Manager.cs",
               "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\Stocks Manager.cs",
               "RelativeToolTip": "Stocks Manager.cs",
-              "ViewState": "AQIAAEMDAAAAAAAAAAAAAFcDAAB1AAAA",
+              "ViewState": "AQIAACsCAAAAAAAAAAAkwEMCAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-28T20:47:58.115Z",
               "EditorCaption": ""
@@ -57,14 +73,14 @@
               "RelativeDocumentMoniker": "IndicatorIntervalConfigUltimate.cs",
               "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\IndicatorIntervalConfigUltimate.cs",
               "RelativeToolTip": "IndicatorIntervalConfigUltimate.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAmwBMAAAA/AAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABMAAAA/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-03T17:32:40.566Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "IndicatorIntervalConfig.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\IndicatorIntervalConfig.cs",
               "RelativeDocumentMoniker": "IndicatorIntervalConfig.cs",
@@ -77,7 +93,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "IndicatorIntervalConfigUltimate.cs [Projekt]",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\IndicatorIntervalConfigUltimate.cs",
               "RelativeDocumentMoniker": "IndicatorIntervalConfigUltimate.cs",
@@ -89,19 +105,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Stocks Manager.cs [Projekt]",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\Stocks Manager.cs",
               "RelativeDocumentMoniker": "Stocks Manager.cs",
               "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\Stocks Manager.cs [Projekt]",
               "RelativeToolTip": "Stocks Manager.cs [Projekt]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-28T20:40:48.099Z",
-              "EditorCaption": " [Projekt]"
+              "WhenOpened": "2024-04-28T20:40:48.099Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "StocksDatabaseDataSet.xsd",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\StocksDatabaseDataSet.xsd",
               "RelativeDocumentMoniker": "StocksDatabaseDataSet.xsd",

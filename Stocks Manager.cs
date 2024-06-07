@@ -17,6 +17,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Xml.Linq;
 using System.Drawing.Text;
+using System.IO.Ports;
 
 namespace StockManager
 {
@@ -402,7 +403,9 @@ namespace StockManager
                         r.Rsi = double.NaN;
                     }
                     rsivalues.Add((double)r.Rsi);
-                    dates.Add(Convert.ToString(r.Date));
+                    string date = Convert.ToString(r.Date);
+                    string datewithouthours = Convert.ToDateTime(date).ToString("dd.MM.yyyy");
+                    dates.Add(datewithouthours);
                 }
 
                 RSI.Color = Color.Purple;
@@ -443,7 +446,9 @@ namespace StockManager
                         c.Cci = double.NaN;
                     }
                     ccivalues.Add((double)c.Cci);
-                    dates.Add(Convert.ToString(c.Date));
+                    string date = Convert.ToString(c.Date);
+                    string datewithouthours = Convert.ToDateTime(date).ToString("dd.MM.yyyy");
+                    dates.Add(datewithouthours);
                 }
 
                 CCI.Color = Color.DarkKhaki;
@@ -485,7 +490,9 @@ namespace StockManager
                         w.WilliamsR = double.NaN;
                     }
                     willamsRvalues.Add((double)w.WilliamsR);
-                    dates.Add(Convert.ToString(w.Date));
+                    string date = Convert.ToString(w.Date);
+                    string datewithouthours = Convert.ToDateTime(date).ToString("dd.MM.yyyy");
+                    dates.Add(datewithouthours);
                 }
 
                 WilliamsR.Color = Color.DarkBlue;
@@ -527,7 +534,9 @@ namespace StockManager
                         u.Ultimate = double.NaN;
                     }
                     ultimatevalues.Add((double)u.Ultimate);
-                    dates.Add(Convert.ToString(u.Date));
+                    string date = Convert.ToString(u.Date);
+                    string datewithouthours = Convert.ToDateTime(date).ToString("dd.MM.yyyy");
+                    dates.Add(datewithouthours);
                 }
 
                 Ultimate.Color = Color.OrangeRed;
@@ -569,7 +578,9 @@ namespace StockManager
                         m.Mfi = double.NaN;
                     }
                     mfivalues.Add((double)m.Mfi);
-                    dates.Add(Convert.ToString(m.Date));
+                    string date = Convert.ToString(m.Date);
+                    string datewithouthours = Convert.ToDateTime(date).ToString("dd.MM.yyyy");
+                    dates.Add(datewithouthours);
                 }
 
                 mfi.Color = Color.DarkSeaGreen;
