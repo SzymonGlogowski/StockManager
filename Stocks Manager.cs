@@ -227,6 +227,10 @@ namespace StockManager
         {
             try
             {
+                foreach (DataGridViewRow row in dgvData.Rows)
+                {
+                    stocksTableAdapter.Delete((int)row.Cells[0].Value, (decimal)row.Cells[1].Value, (decimal)row.Cells[2].Value, (decimal)row.Cells[3].Value, (decimal)row.Cells[4].Value, (DateTime)row.Cells[5].Value, (int)row.Cells[6].Value);
+                }
                 var historicdata = await Yahoo.GetHistoricalAsync(symbol, startDate, endDate);
                 var security = await Yahoo.Symbols(symbol).Fields(Field.LongName).QueryAsync();
                 var ticker = security[symbol];
