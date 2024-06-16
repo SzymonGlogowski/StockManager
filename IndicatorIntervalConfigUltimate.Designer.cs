@@ -111,6 +111,7 @@
             this.MinimumSize = new System.Drawing.Size(185, 153);
             this.Name = "IndicatorIntervalConfigUltimate";
             this.Text = "IndicatorIntervalConfigUltimate";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IndicatorIntervalConfigUltimate_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

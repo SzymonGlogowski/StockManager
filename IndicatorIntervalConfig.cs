@@ -59,6 +59,8 @@ namespace StockManager
             }
             this.Close();
         }
+
+
         public IndicatorIntervalConfig(int cbxIndicators)
         {
             InitializeComponent();
@@ -74,6 +76,51 @@ namespace StockManager
             if (Index == 2)
             {
                 txtInterval.Text = "10";
+            }
+        }
+
+        private void IndicatorIntervalConfig_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+                if (Index == 0 || Index == 4)
+                {
+                    if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) < 2)
+                    {
+                        Interval = 14;
+                        MessageBox.Show("Generic value 14 were applied for Interval because input value is incorrect!", "Warning Interval");
+                    }
+                    else
+                    {
+                        Interval = Convert.ToInt32(txtInterval.Text);
+                    }
+                }
+
+            if (Index == 1 || Index == 5 || Index == 6 || Index == 7 || Index == 8)
+            {
+                if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) < 2)
+                {
+                    Interval = 20;
+                    MessageBox.Show("Generic value 20 were applied for Interval because input value is incorrect!", "Warning Interval");
+
+                }
+                else
+                {
+                    Interval = Convert.ToInt32(txtInterval.Text);
+                }
+            }
+
+            if (Index == 2)
+            {
+                if (txtInterval.Text == "" || txtInterval.Text == null || Convert.ToInt32(txtInterval.Text) < 2)
+                {
+                    Interval = 10;
+                    MessageBox.Show("Generic value 10 were applied for Interval because input value is incorrect!", "Warning Interval");
+
+                }
+                else
+                {
+                    Interval = Convert.ToInt32(txtInterval.Text);
+                }
             }
         }
     }

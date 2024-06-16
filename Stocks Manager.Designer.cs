@@ -226,8 +226,7 @@
             chartArea1.Name = "IndicatorsArea";
             chartArea1.Position.Auto = false;
             chartArea1.Position.Height = 87F;
-            chartArea1.Position.Width = 87F;
-            chartArea1.Position.X = 1F;
+            chartArea1.Position.Width = 90F;
             chartArea1.Position.Y = 1F;
             this.chtIndicators.ChartAreas.Add(chartArea1);
             this.chtIndicators.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -312,8 +311,7 @@
             chartArea2.Name = "StockChartArea";
             chartArea2.Position.Auto = false;
             chartArea2.Position.Height = 87F;
-            chartArea2.Position.Width = 87F;
-            chartArea2.Position.X = 1F;
+            chartArea2.Position.Width = 90F;
             chartArea2.Position.Y = 1F;
             this.chtChart.ChartAreas.Add(chartArea2);
             this.chtChart.Dock = System.Windows.Forms.DockStyle.Fill;

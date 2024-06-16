@@ -18,6 +18,7 @@ using Newtonsoft.Json.Linq;
 using System.Xml.Linq;
 using System.Drawing.Text;
 using System.IO.Ports;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace StockManager
 {
@@ -108,14 +109,14 @@ namespace StockManager
         }
         private void AddScrollbarToChart()
         {
-            if (dgvData.Rows.Count > 30)
+            if (dgvData.Rows.Count > 90)
             {
                 chtChart.ChartAreas["StockChartArea"].AxisX.ScrollBar.Enabled = true;
                 chtChart.ChartAreas["StockChartArea"].AxisX.IsLabelAutoFit = true;
-                chtChart.ChartAreas["StockChartArea"].AxisX.ScaleView.Size = 30;
+                chtChart.ChartAreas["StockChartArea"].AxisX.ScaleView.Size = 90;
             }
 
-            if (dgvData.Rows.Count <= 30)
+            if (dgvData.Rows.Count <= 90)
             {
                 chtChart.ChartAreas["StockChartArea"].AxisX.ScaleView.Size = dgvData.Rows.Count;
             }
@@ -123,14 +124,14 @@ namespace StockManager
 
         private void AddScrollbarToIndicators()
         {
-            if (dgvData.Rows.Count > 30)
+            if (dgvData.Rows.Count > 90)
             {
                 chtIndicators.ChartAreas["IndicatorsArea"].AxisX.ScrollBar.Enabled = true;
                 chtIndicators.ChartAreas["IndicatorsArea"].AxisX.IsLabelAutoFit = true;
-                chtIndicators.ChartAreas["IndicatorsArea"].AxisX.ScaleView.Size = 30;
+                chtIndicators.ChartAreas["IndicatorsArea"].AxisX.ScaleView.Size = 90;
             }
 
-            if (dgvData.Rows.Count <= 30)
+            if (dgvData.Rows.Count <= 90)
             {
                 chtIndicators.ChartAreas["IndicatorsArea"].AxisX.ScaleView.Size = dgvData.Rows.Count;
             }
@@ -230,6 +231,14 @@ namespace StockManager
                 foreach (DataGridViewRow row in dgvData.Rows)
                 {
                     stocksTableAdapter.Delete((int)row.Cells[0].Value, (decimal)row.Cells[1].Value, (decimal)row.Cells[2].Value, (decimal)row.Cells[3].Value, (decimal)row.Cells[4].Value, (DateTime)row.Cells[5].Value, (int)row.Cells[6].Value);
+                }
+                for(int i = 2; i < chtChart.Series.Count; i += 1)
+                {
+                    chtChart.Series[i].Points.Clear();
+                }
+                for (int i = 0; i < chtIndicators.Series.Count; i += 1)
+                {
+                    chtIndicators.Series[i].Points.Clear();
                 }
                 var historicdata = await Yahoo.GetHistoricalAsync(symbol, startDate, endDate);
                 var security = await Yahoo.Symbols(symbol).Fields(Field.LongName).QueryAsync();
