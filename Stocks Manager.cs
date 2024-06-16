@@ -19,11 +19,13 @@ using System.Xml.Linq;
 using System.Drawing.Text;
 using System.IO.Ports;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Security.Cryptography.X509Certificates;
 
 namespace StockManager
 {
     public partial class Form1 : Form
     {
+        public bool FlagMA { get; set; }
         public Form1()
         {
             InitializeComponent();
@@ -138,15 +140,29 @@ namespace StockManager
         }
         private void HideOtherMovingAverages()
         {
+            FlagMA = true;
             for (int i = 2; i < chtChart.Series.Count; i += 1)
             {
-                if (i != cbxIndicators.SelectedIndex - 3)
+                if (i != cbxIndicators.SelectedIndex - 3 && cbxIndicators.SelectedIndex >= 5)
                 {
                     chtChart.Series[i].Enabled = false;
                 }
-                else if(i == cbxIndicators.SelectedIndex - 3)
+                else if(i == cbxIndicators.SelectedIndex - 3 && cbxIndicators.SelectedIndex >= 5)
                 {
                     chtChart.Series[i].Enabled = true;
+                }
+
+                if (cbxIndicators.SelectedIndex < 5)
+                {
+                    if (chtChart.Series[i].Points.Any() && FlagMA == true)
+                    {
+                        chtChart.Series[i].Enabled = true;
+                        FlagMA = false;
+                    }
+                    else
+                    {
+                        chtChart.Series[i].Enabled = false;
+                    }
                 }
             }
         }
@@ -163,6 +179,13 @@ namespace StockManager
             {
                 chxMovingAverages.Checked = false;
                 chxMovingAverages.Checked = true;
+            }
+        }
+        private void DeleteMovingAverages()
+        {
+            for (int i = 2; i < chtChart.Series.Count; i += 1)
+            {
+                chtChart.Series[i].Points.Clear();
             }
         }
         private void ScalingByMarkingArea()
@@ -232,10 +255,7 @@ namespace StockManager
                 {
                     stocksTableAdapter.Delete((int)row.Cells[0].Value, (decimal)row.Cells[1].Value, (decimal)row.Cells[2].Value, (decimal)row.Cells[3].Value, (decimal)row.Cells[4].Value, (DateTime)row.Cells[5].Value, (int)row.Cells[6].Value);
                 }
-                for(int i = 2; i < chtChart.Series.Count; i += 1)
-                {
-                    chtChart.Series[i].Points.Clear();
-                }
+                DeleteMovingAverages();
                 for (int i = 0; i < chtIndicators.Series.Count; i += 1)
                 {
                     chtIndicators.Series[i].Points.Clear();
@@ -890,6 +910,10 @@ namespace StockManager
             {
                 ShowOtherMovingAverages();
             }
+        }
+        private void btnRemoveMovingAverages_Click(object sender, EventArgs e)
+        {
+            DeleteMovingAverages();
         }
     }
 }
