@@ -26,6 +26,7 @@ namespace StockManager
     public partial class Form1 : Form
     {
         public bool FlagMA { get; set; }
+        private string jsonPath = "jsons\\Stocks.json";
         public Form1()
         {
             InitializeComponent();
@@ -245,7 +246,7 @@ namespace StockManager
                 }
             }
             var jsonwr = JsonConvert.SerializeObject(stockObjects, Formatting.Indented);
-            File.WriteAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json", jsonwr);
+            File.WriteAllText(jsonPath, jsonwr);
         }
         private async Task getStockData(string symbol, DateTime startDate, DateTime endDate)
         {
@@ -421,7 +422,7 @@ namespace StockManager
                 chtIndicators.Legends.Clear();
 
                 PrepareJson();
-                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                var jsonre = File.ReadAllText(jsonPath);
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
                     .ToSortedCollection();
@@ -464,7 +465,7 @@ namespace StockManager
                 chtIndicators.Legends.Clear();
 
                 PrepareJson();
-                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                var jsonre = File.ReadAllText(jsonPath);
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
                     .ToSortedCollection();
@@ -508,7 +509,7 @@ namespace StockManager
                 chtIndicators.Legends.Clear();
 
                 PrepareJson();
-                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                var jsonre = File.ReadAllText(jsonPath);
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
                     .ToSortedCollection();
@@ -552,7 +553,7 @@ namespace StockManager
                 chtIndicators.Legends.Clear();
 
                 PrepareJson();
-                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                var jsonre = File.ReadAllText(jsonPath);
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
                     .ToSortedCollection();
@@ -596,7 +597,7 @@ namespace StockManager
                 chtIndicators.Legends.Clear();
 
                 PrepareJson();
-                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                var jsonre = File.ReadAllText(jsonPath);
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
                     .ToSortedCollection();
@@ -636,7 +637,7 @@ namespace StockManager
                 chtIndicators.Legends.Clear();
 
                 PrepareJson();
-                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                var jsonre = File.ReadAllText(jsonPath);
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
                     .ToSortedCollection();
@@ -683,7 +684,7 @@ namespace StockManager
                 chtIndicators.Legends.Clear();
 
                 PrepareJson();
-                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                var jsonre = File.ReadAllText(jsonPath);
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
                     .ToSortedCollection();
@@ -729,7 +730,7 @@ namespace StockManager
                 chtIndicators.Legends.Clear();
 
                 PrepareJson();
-                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                var jsonre = File.ReadAllText(jsonPath);
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
                     .ToSortedCollection();
@@ -775,7 +776,7 @@ namespace StockManager
                 chtIndicators.Legends.Clear();
 
                 PrepareJson();
-                var jsonre = File.ReadAllText("C:\\Users\\Admin\\Documents\\GitHub\\StockManager\\jsons\\Stocks.json");
+                var jsonre = File.ReadAllText(jsonPath);
                 IEnumerable<Quote> quotes = JsonConvert
                     .DeserializeObject<IReadOnlyCollection<Quote>>(jsonre)
                     .ToSortedCollection();
